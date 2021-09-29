@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Crayons Playground</title>
+    <link href="dist/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+    <h1>Crayons Playground</h1>
+    </header>
+    <div class="container">
+      <div class="sidebar">
+        <ul>
+          <li class="drag-item" id="fw-button" draggable="true">Button</li>
+          <li class="drag-item" id="fw-checkbox" draggable="true">Checkbox</li>
+          <li class="drag-item" id="fw-dropdown-button" draggable="true">Dropdown-button</li>
+          <li class="drag-item" id="fw-datepicker" draggable="true">Datepicker</li>
+          <li class="drag-item" id="fw-icon" draggable="true">Icon</li>
+          <li class="drag-item" id="fw-input" draggable="true">Input</li>
+          <li class="drag-item" id="fw-label" draggable="true">Label</li>
+          <li class="drag-item" id="fw-radio" draggable="true">Radio</li>
+        </ul>
+      </div>
+      <div class="editor" id="editor"></div>
+      <div class="inspector"></div>
+      </div>
+
+   <script
+  type="module"
+  src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js">
+</script> 
+   <script src="main.js" type="module">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+:root {
+  --elephant: #183247;
+  --smoke: #f3f5f7;
+  --smoke10: #f7f9fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+header {
+  padding: 0.5em 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  height: 100%;
+}
+
+.inspector {
+  background-color: var(--smoke);
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: var(--elephant);
+  height: 100vh;
+  padding: 1em;
+  color: white;
+}
+
+.editor {
+  height: 100vh;
+  background-color: var(--smoke10);
+  padding: 1em;
+  background-image: linear-gradient(to right, rgb(217, 226, 233) 1px, transparent 1px), linear-gradient(rgb(217, 226, 233) 1px, transparent 1px);
+background-size: 20px 20px;
+background-color: rgb(237, 242, 246);
+}
+
+.drag-item {
+  cursor: move;
+  padding: 0.25em;
+  margin: 0.25em;
+  list-style: none;
+  border-radius: 4px;
+}
+
+.drag-item:hover {
+  color: var(--elephant);
+  background: var(--smoke);
+}
