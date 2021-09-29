@@ -37,6 +37,11 @@ const default_props = {
     value: 'Meta Information',
     color: 'blue',
   },
+  'fw-radio': {
+    checked: true,
+    label: 'Select to agree',
+    children: 'Agree or Disagree',
+  },
 };
 
 export default default_props;

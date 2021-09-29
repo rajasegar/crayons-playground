@@ -36,6 +36,7 @@ export default function handleDrop(ev) {
     case 'fw-icon':
     case 'fw-input':
     case 'fw-label':
+    case 'fw-radio':
       child = render(id, props);
       ev.target.appendChild(child);
       break;
