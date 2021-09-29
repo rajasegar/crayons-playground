@@ -1,15 +1,18 @@
 import defaultProps from './defaultProps';
+import {store} from './store';
 import {
   render,
   renderButton,
   renderCheckbox,
   renderDropdownButton,
+  renderSelect,
 } from './renderFunctions';
 
 export default function handleDrop(ev) {
   ev.preventDefault();
   ev.stopImmediatePropagation();
   const id = ev.dataTransfer.getData('id');
+  store.dispatch({type: 'ADD_COMPONENT', id});
   const props = defaultProps[id];
   let child;
   switch (id) {
@@ -28,8 +31,8 @@ export default function handleDrop(ev) {
       ev.target.appendChild(child);
       break;
 
-    case 'fw-datepicker':
-      child = render(id, props);
+    case 'fw-select':
+      child = renderSelect(props);
       ev.target.appendChild(child);
       break;
 
@@ -37,6 +40,7 @@ export default function handleDrop(ev) {
     case 'fw-input':
     case 'fw-label':
     case 'fw-radio':
+    case 'fw-datepicker':
       child = render(id, props);
       ev.target.appendChild(child);
       break;

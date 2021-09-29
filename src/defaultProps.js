@@ -42,6 +42,17 @@ const default_props = {
     label: 'Select to agree',
     children: 'Agree or Disagree',
   },
+  'fw-select': {
+    label: 'House Name',
+    required: true,
+    value: '1',
+    placeholder: 'Your choice',
+    'state-text': 'Select singular option',
+    options: [
+      {value: 1, label: 'Starks'},
+      {value: 2, label: 'Lannisters'},
+    ],
+  },
 };
 
 export default default_props;

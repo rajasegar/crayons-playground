@@ -61,15 +61,22 @@ const renderDropdownButton = (props) => {
   return component;
 };
 
-const renderDatepicker = (props) => {
-  const component = document.createElement('fw-datepicker');
-  Object.keys(props).forEach((k) => {
-    if (k !== 'children') {
+const renderSelect = (props) => {
+  const component = document.createElement('fw-select');
+  Object.keys(props)
+    .filter((k) => k !== 'options')
+    .forEach((k) => {
       component.setAttribute(k, props[k]);
-    } else {
-      component.innerHTML = props[k];
-    }
-  });
+    });
+
+  const options = props['options'];
+
+  const opts = options
+    .map((option) => {
+      return `<fw-select-option value="${option.value}">${option.label}</fw-select-option>`;
+    })
+    .join('\n');
+  component.innerHTML = opts;
 
   return component;
 };
@@ -79,5 +86,5 @@ export {
   renderButton,
   renderCheckbox,
   renderDropdownButton,
-  renderDatepicker,
+  renderSelect,
 };
