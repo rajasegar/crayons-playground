@@ -1,51 +1,12 @@
-import defaultProps from './defaultProps';
-import {store} from './store';
-import {
-  render,
-  renderButton,
-  renderCheckbox,
-  renderDropdownButton,
-  renderSelect,
-} from './renderFunctions';
+import { store } from './store'
+export default function handleDrop (ev) {
+  ev.preventDefault()
+  ev.stopImmediatePropagation()
+  const id = ev.dataTransfer.getData('id')
+  const payload = {}
+  payload.type = id
+  payload.parentName = 'root'
+  payload.rootParentType = 'root'
 
-export default function handleDrop(ev) {
-  ev.preventDefault();
-  ev.stopImmediatePropagation();
-  const id = ev.dataTransfer.getData('id');
-  store.dispatch({type: 'ADD_COMPONENT', id});
-  const props = defaultProps[id];
-  let child;
-  switch (id) {
-    case 'fw-button':
-      child = renderButton(props);
-      ev.target.appendChild(child);
-      break;
-
-    case 'fw-checkbox':
-      child = renderCheckbox(props);
-      ev.target.appendChild(child);
-      break;
-
-    case 'fw-dropdown-button':
-      child = renderDropdownButton(props);
-      ev.target.appendChild(child);
-      break;
-
-    case 'fw-select':
-      child = renderSelect(props);
-      ev.target.appendChild(child);
-      break;
-
-    case 'fw-icon':
-    case 'fw-input':
-    case 'fw-label':
-    case 'fw-radio':
-    case 'fw-datepicker':
-      child = render(id, props);
-      ev.target.appendChild(child);
-      break;
-
-    default:
-      throw new Error('Unknown component');
-  }
+  store.dispatch({ type: 'ADD_COMPONENT', payload })
 }
