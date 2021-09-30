@@ -40,7 +40,7 @@ export default function updateEditor (components) {
       case 'fw-label':
       case 'fw-radio':
       case 'fw-datepicker':
-        child = render(id, props)
+        child = render(type, props)
         editor.appendChild(child)
         break
 

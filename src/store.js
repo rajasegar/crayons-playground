@@ -51,10 +51,7 @@ function appReducer (state = initialState, { type, payload }) {
 export const store = createStore(appReducer)
 
 store.subscribe(() => {
-  console.log(store.getState())
   const { components } = store.getState()
-  // const panelName = document.getElementById('panel-name')
-  // panelName.textContent = selectedId
   updateEditor(components)
   updateInspector(store.getState())
 })

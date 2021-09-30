@@ -1,4 +1,5 @@
 import './panels/button'
+import './panels/icon'
 
 export default function updateInspector (state) {
   const { components, selectedId } = state
@@ -20,6 +21,8 @@ export default function updateInspector (state) {
       break
 
     case 'fw-icon':
+      inspector.innerHTML = `<icon-panel data-id="${selectedId}"></icon-panel>`
+      break
     case 'fw-input':
     case 'fw-label':
     case 'fw-radio':
