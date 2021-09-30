@@ -17,7 +17,9 @@ const initialState = {
       children: [],
       props: {}
     }
-  }
+  },
+  builderMode: true,
+  showCode: false
 }
 
 function appReducer (state = initialState, { type, payload }) {
@@ -43,6 +45,18 @@ function appReducer (state = initialState, { type, payload }) {
         draftState.components[payload.id].props[payload.name] = payload.value
       })
 
+    case 'SELECT_COMPONENT':
+      return {
+        ...state,
+        selectedId: payload.selectedId
+      }
+
+    case 'TOGGLE_BUILDER_MODE':
+      return {
+        ...state,
+        builderMode: !state.builderMode
+      }
+
     default:
       return state
   }
@@ -51,7 +65,6 @@ function appReducer (state = initialState, { type, payload }) {
 export const store = createStore(appReducer)
 
 store.subscribe(() => {
-  const { components } = store.getState()
-  updateEditor(components)
+  updateEditor()
   updateInspector(store.getState())
 })

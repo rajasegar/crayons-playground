@@ -8,12 +8,13 @@
   <body>
     <header>
     <h1>Crayons Playground</h1>
-    <div>Builder Mode <fw-toggle size="small" checked></fw-toggle></div>
+    <toggle-builder-mode></toggle-builder-mode>
     <div>Code Panel <fw-toggle size="small"></fw-toggle></div>
     </header>
     <div class="container">
       <div class="sidebar">
         <ul>
+          <li class="drag-item" id="fw-flex" draggable="true">Flex</li>
           <li class="drag-item" id="fw-button" draggable="true">Button</li>
           <li class="drag-item" id="fw-checkbox" draggable="true">Checkbox</li>
           <li class="drag-item" id="fw-dropdown-button" draggable="true">Dropdown-button</li>
@@ -25,7 +26,7 @@
           <li class="drag-item" id="fw-select" draggable="true">Select</li>
         </ul>
       </div>
-      <div class="editor" id="editor"></div>
+      <div id="editor" class="builder-mode"></div>
       <div class="inspector" id="inspector">
        <h2 id="panel-name">Document</h2> 
       </div>

@@ -39,10 +39,13 @@ header {
   color: white;
 }
 
-.editor {
+#editor {
   height: 100vh;
   background-color: var(--smoke10);
   padding: 1em;
+}
+
+.builder-mode {
   background-image: linear-gradient(to right, rgb(217, 226, 233) 1px, transparent 1px), linear-gradient(rgb(217, 226, 233) 1px, transparent 1px);
 background-size: 20px 20px;
 background-color: rgb(237, 242, 246);
@@ -59,4 +62,14 @@ background-color: rgb(237, 242, 246);
 .drag-item:hover {
   color: var(--elephant);
   background: var(--smoke);
+}
+
+.preview-wrapper {
+  margin: 0.25em;
+  padding: 0.5em;
+  border: 1px dashed black;
+}
+
+.preview-wrapper:hover {
+  border: 1px solid var(--elephant);
 }

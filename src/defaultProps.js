@@ -52,6 +52,8 @@ const defaultProps = {
       { value: 1, label: 'Starks' },
       { value: 2, label: 'Lannisters' }
     ]
+  },
+  'fw-flex': {
   }
 }
 

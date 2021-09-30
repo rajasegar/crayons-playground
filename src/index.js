@@ -1,17 +1,18 @@
-import handleDrop from './handleDrop';
+import handleDrop from './handleDrop'
+import './toggle-builder-mode'
 
 (function () {
-  const editor = document.getElementById('editor');
+  const editor = document.getElementById('editor')
 
   editor.addEventListener('dragover', (ev) => {
-    ev.preventDefault();
-  });
+    ev.preventDefault()
+  })
 
-  editor.addEventListener('drop', handleDrop);
+  editor.addEventListener('drop', handleDrop)
 
   document.addEventListener('dragstart', (ev) => {
     if (ev.target.classList.contains('drag-item')) {
-      ev.dataTransfer.setData('id', ev.target.id);
+      ev.dataTransfer.setData('id', ev.target.id)
     }
-  });
-})();
+  })
+})()

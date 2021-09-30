@@ -6,33 +6,45 @@ import {
   renderSelect
 } from './renderFunctions'
 
-export default function updateEditor (components) {
+import { store } from './store'
+
+export default function updateEditor () {
+  const { components, builderMode } = store.getState()
   const editor = document.getElementById('editor')
   // clear editor
   editor.innerHTML = ''
 
   components.root.children.forEach(id => {
     const { type, props } = components[id]
+    const preview = document.createElement('div')
+
+    if (builderMode) {
+      preview.className = 'preview-wrapper'
+    }
+
+    preview.onclick = () => {
+      store.dispatch({
+        type: 'SELECT_COMPONENT',
+        payload: { selectedId: id }
+      })
+    }
+
     let child
     switch (type) {
       case 'fw-button':
         child = renderButton(props)
-        editor.appendChild(child)
         break
 
       case 'fw-checkbox':
         child = renderCheckbox(props)
-        editor.appendChild(child)
         break
 
       case 'fw-dropdown-button':
         child = renderDropdownButton(props)
-        editor.appendChild(child)
         break
 
       case 'fw-select':
         child = renderSelect(props)
-        editor.appendChild(child)
         break
 
       case 'fw-icon':
@@ -41,11 +53,13 @@ export default function updateEditor (components) {
       case 'fw-radio':
       case 'fw-datepicker':
         child = render(type, props)
-        editor.appendChild(child)
         break
 
       default:
         throw new Error('Unknown component')
     }
+
+    preview.appendChild(child)
+    editor.appendChild(preview)
   })
 }

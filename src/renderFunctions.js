@@ -81,10 +81,16 @@ const renderSelect = (props) => {
   return component
 }
 
+const renderFlex = (props) => {
+  const component = document.createElement('fw-flex')
+  return component
+}
+
 export {
   render,
   renderButton,
   renderCheckbox,
   renderDropdownButton,
-  renderSelect
+  renderSelect,
+  renderFlex
 }
