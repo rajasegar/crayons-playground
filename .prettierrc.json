@@ -2,6 +2,7 @@
   "trailingComma": "es5",
   "tabWidth": 2,
   "singleQuote": true,
-  "bracketSpacing": false,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "semi": false,
+  "bracketSpacing": true
 }

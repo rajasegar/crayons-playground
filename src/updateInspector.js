@@ -1,7 +1,8 @@
 import './panels/button'
 import './panels/icon'
+import './panels/flex'
 
-export default function updateInspector (state) {
+export default function updateInspector(state) {
   const { components, selectedId } = state
   const inspector = document.getElementById('inspector')
 
@@ -23,6 +24,11 @@ export default function updateInspector (state) {
     case 'fw-icon':
       inspector.innerHTML = `<icon-panel data-id="${selectedId}"></icon-panel>`
       break
+
+    case 'fw-flex':
+      inspector.innerHTML = `<flex-panel data-id="${selectedId}"></flex-panel>`
+      break
+
     case 'fw-input':
     case 'fw-label':
     case 'fw-radio':

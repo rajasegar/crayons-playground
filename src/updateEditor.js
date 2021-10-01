@@ -3,20 +3,25 @@ import {
   renderButton,
   renderCheckbox,
   renderDropdownButton,
-  renderSelect
+  renderSelect,
+  renderWithChildren,
 } from './renderFunctions'
 
 import { store } from './store'
 
-export default function updateEditor () {
+import './components/fw-flex'
+
+export default function updateEditor() {
+  debugger
   const { components, builderMode } = store.getState()
   const editor = document.getElementById('editor')
   // clear editor
   editor.innerHTML = ''
 
-  components.root.children.forEach(id => {
-    const { type, props } = components[id]
+  components.root.children.forEach((id) => {
+    const { type, props, children } = components[id]
     const preview = document.createElement('div')
+    preview.id = id
 
     if (builderMode) {
       preview.className = 'preview-wrapper'
@@ -25,7 +30,7 @@ export default function updateEditor () {
     preview.onclick = () => {
       store.dispatch({
         type: 'SELECT_COMPONENT',
-        payload: { selectedId: id }
+        payload: { selectedId: id },
       })
     }
 
@@ -53,6 +58,10 @@ export default function updateEditor () {
       case 'fw-radio':
       case 'fw-datepicker':
         child = render(type, props)
+        break
+
+      case 'fw-flex':
+        child = renderWithChildren('fw-flex', props, children)
         break
 
       default:

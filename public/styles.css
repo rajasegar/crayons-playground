@@ -30,6 +30,8 @@ header {
 .inspector {
   background-color: var(--smoke);
   height: 100vh;
+  padding: 1em;
+  border-left: 1px solid var(--elephant);
 }
 
 .sidebar {

@@ -15,14 +15,14 @@ const initialState = {
       parent: DEFAULT_ID,
       type: 'Box',
       children: [],
-      props: {}
-    }
+      props: {},
+    },
   },
   builderMode: true,
-  showCode: false
+  showCode: false,
 }
 
-function appReducer (state = initialState, { type, payload }) {
+function appReducer(state = initialState, { type, payload }) {
   switch (type) {
     case 'ADD_COMPONENT':
       return produce(state, (draftState) => {
@@ -36,7 +36,7 @@ function appReducer (state = initialState, { type, payload }) {
           children: [],
           type: payload.type,
           parent: payload.parentName,
-          rootParentType: payload.rootParentType || payload.type
+          rootParentType: payload.rootParentType || payload.type,
         }
       })
 
@@ -48,13 +48,13 @@ function appReducer (state = initialState, { type, payload }) {
     case 'SELECT_COMPONENT':
       return {
         ...state,
-        selectedId: payload.selectedId
+        selectedId: payload.selectedId,
       }
 
     case 'TOGGLE_BUILDER_MODE':
       return {
         ...state,
-        builderMode: !state.builderMode
+        builderMode: !state.builderMode,
       }
 
     default:
@@ -65,6 +65,7 @@ function appReducer (state = initialState, { type, payload }) {
 export const store = createStore(appReducer)
 
 store.subscribe(() => {
+  console.log(store.getState())
   updateEditor()
   updateInspector(store.getState())
 })
