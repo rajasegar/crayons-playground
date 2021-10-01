@@ -69,7 +69,7 @@ const renderWithChildren = (name, props, children) => {
         break
 
       default:
-        throw new Error('renderWithChildren: Unknown component')
+        console.error('renderWithChildren: Unknown component')
     }
 
     preview.appendChild(child)

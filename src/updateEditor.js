@@ -9,7 +9,7 @@ import {
 
 import { store } from './store'
 
-import './components/fw-flex'
+import './crayons/fw-flex'
 
 export default function updateEditor() {
   debugger
@@ -65,7 +65,7 @@ export default function updateEditor() {
         break
 
       default:
-        throw new Error('Unknown component')
+        console.error('Editor: Unknown component')
     }
 
     preview.appendChild(child)

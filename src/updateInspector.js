@@ -36,6 +36,6 @@ export default function updateInspector(state) {
       break
 
     default:
-      throw new Error('Unknown component')
+      console.error('Inspector: Unknown component')
   }
 }

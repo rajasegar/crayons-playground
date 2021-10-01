@@ -1,12 +1,13 @@
 import { LitElement, html } from 'lit'
-import { store } from './store'
+import { store } from '../store'
 
 class ToggleBuilderMode extends LitElement {
-  constructor () {
+  constructor() {
     super()
     this.addEventListener('fwChange', () => {
+      console.log('toggle builder mode')
       store.dispatch({
-        type: 'TOGGLE_BUILDER_MODE'
+        type: 'TOGGLE_BUILDER_MODE',
       })
       const editor = document.getElementById('editor')
       if (editor.className === 'builder-mode') {
@@ -17,9 +18,9 @@ class ToggleBuilderMode extends LitElement {
     })
   }
 
-  render () {
+  render() {
     return html`
-    <div>Builder Mode <fw-toggle size="small" checked></fw-toggle></div>
+      <div>Builder Mode <fw-toggle size="small" checked></fw-toggle></div>
     `
   }
 }

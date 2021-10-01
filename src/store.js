@@ -57,6 +57,12 @@ function appReducer(state = initialState, { type, payload }) {
         builderMode: !state.builderMode,
       }
 
+    case 'TOGGLE_CODE_PANEL':
+      return {
+        ...state,
+        showCode: !state.showCode,
+      }
+
     default:
       return state
   }

@@ -1,7 +1,7 @@
 import handleDrop from './handleDrop'
-import './toggle-builder-mode'
-
-(function () {
+import './components/toggle-builder-mode'
+import './components/toggle-show-code'
+;(function () {
   const editor = document.getElementById('editor')
 
   editor.addEventListener('dragover', (ev) => {
