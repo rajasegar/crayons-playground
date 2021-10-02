@@ -1,6 +1,7 @@
 import handleDrop from './handleDrop'
 import './components/toggle-builder-mode'
 import './components/toggle-show-code'
+import './components/export-to-jsfiddle'
 ;(function () {
   const editor = document.getElementById('editor')
 

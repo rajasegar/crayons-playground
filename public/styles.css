@@ -27,6 +27,7 @@ header {
 .brand {
   font-size: 1em;
   padding-left: 1em;
+  width: 200px;
 }
 
 .brand span {
