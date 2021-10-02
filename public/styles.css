@@ -40,12 +40,6 @@ header {
   height: calc(100vh - 32px);
 }
 
-.inspector {
-  background-color: var(--smoke);
-  padding: 1em;
-  border-left: 1px solid var(--elephant);
-}
-
 .sidebar {
   background-color: var(--sidebar-bg);
   padding: 1em 0.5em;
@@ -66,6 +60,8 @@ header {
 
 #code-panel {
   padding: 1em;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .builder-mode {

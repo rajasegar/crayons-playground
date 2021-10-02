@@ -2,6 +2,9 @@ import handleDrop from './handleDrop'
 import './components/toggle-builder-mode'
 import './components/toggle-show-code'
 import './components/export-to-jsfiddle'
+import './components/inspector-panel'
+import './components/clear-editor'
+
 ;(function () {
   const editor = document.getElementById('editor')
 

@@ -42,7 +42,6 @@ class IconPanel extends HTMLElement {
     txt$.value = props.name
 
     txt$.addEventListener('change', (ev) => {
-      console.log(ev)
       const id = this.dataset.id
       const propName = ev.target.dataset.property
 
@@ -54,8 +53,6 @@ class IconPanel extends HTMLElement {
           value: ev.target.value,
         },
       })
-
-      return true
     })
   }
 }

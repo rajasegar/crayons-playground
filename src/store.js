@@ -1,7 +1,8 @@
 import { createStore } from 'redux'
 import produce from 'immer'
 import DEFAULT_PROPS from './defaultProps'
-import { generateId } from './generateId'
+import { generateId } from './utils/generateId'
+import { duplicateComponent, deleteComponent } from './utils/recursive'
 import updateEditor from './updateEditor'
 import updateInspector from './updateInspector'
 
@@ -13,7 +14,7 @@ const initialState = {
     root: {
       id: DEFAULT_ID,
       parent: DEFAULT_ID,
-      type: 'Box',
+      type: 'root',
       children: [],
       props: {},
     },
@@ -63,6 +64,61 @@ function appReducer(state = initialState, { type, payload }) {
         showCode: !state.showCode,
       }
 
+    case 'DUPLICATE_COMPONENT':
+      return produce(state, (draftState) => {
+        const selectedComponent = draftState.components[draftState.selectedId]
+
+        if (selectedComponent.id !== DEFAULT_ID) {
+          const parentElement = draftState.components[selectedComponent.parent]
+
+          const { newId, clonedComponents } = duplicateComponent(
+            selectedComponent,
+            draftState.components,
+          )
+
+          draftState.components = {
+            ...draftState.components,
+            ...clonedComponents,
+          }
+          draftState.components[parentElement.id].children.push(newId)
+        }
+      })
+
+    case 'DELETE_COMPONENT':
+      if (payload.componentId === 'root') {
+        return state
+      }
+
+      return produce(state, (draftState) => {
+        const component = draftState.components[payload.componentId]
+
+        // Remove self
+        if (component && component.parent) {
+          const children = draftState.components[
+            component.parent
+          ].children.filter((id) => id !== payload.componentId)
+
+          draftState.components[component.parent].children = children
+        }
+
+        draftState.selectedId = DEFAULT_ID
+        draftState.components = deleteComponent(
+          component,
+          draftState.components,
+        )
+      })
+
+    case 'CLEAR_EDITOR':
+      return initialState
+
+    case 'RESET_PROPS':
+      return produce(state, (draftState) => {
+        const component = draftState.components[payload.componentId]
+        const { form, ...defaultProps } = DEFAULT_PROPS[component.type] || {}
+
+        draftState.components[payload.componentId].props = defaultProps || {}
+      })
+
     default:
       return state
   }
@@ -71,7 +127,6 @@ function appReducer(state = initialState, { type, payload }) {
 export const store = createStore(appReducer)
 
 store.subscribe(() => {
-  console.log(store.getState())
   updateEditor()
   updateInspector(store.getState())
 })

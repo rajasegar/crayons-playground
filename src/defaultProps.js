@@ -7,6 +7,7 @@ const defaultProps = {
   'fw-checkbox': {
     children: 'I Agree',
     checked: true,
+    label: ''
   },
   'fw-dropdown-button': {
     label: 'Choose the sport',

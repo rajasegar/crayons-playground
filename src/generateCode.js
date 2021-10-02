@@ -16,7 +16,7 @@ function generateCodeForChildren(offspring) {
     const { type, props, children } = components[id]
     const properties = Object.keys(props)
       .filter((p) => p !== 'children')
-      .map((p) => `${p}=${props[p]}`)
+      .map((p) => `${p}="${props[p]}"`)
       .join(' ')
 
     if (props.children) {
