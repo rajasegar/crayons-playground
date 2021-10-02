@@ -3,18 +3,13 @@ import { store } from '../store'
 
 class ButtonPanel extends LitElement {
   static get styles() {
-    return css`
-      h2 {
-        background: yellow;
-      }
-    `
+    return css``
   }
 
   constructor() {
     super()
     this.addEventListener('fwChange', (ev) => {
       const id = this.dataset.id
-      debugger
       const path = ev.path || (ev.composedPath && ev.composedPath())
       const propName = path[0].dataset.property
 
@@ -30,11 +25,13 @@ class ButtonPanel extends LitElement {
   }
 
   render() {
+    const { components } = store.getState()
+    const { props } = components[this.dataset.id]
     return html`
       <h2>Button</h2>
       <fw-select
         label="Color"
-        value="secondary"
+        value=${props.color}
         placeholder="Your choice"
         data-id="${this.dataset.id}"
         data-property="color"
@@ -48,7 +45,7 @@ class ButtonPanel extends LitElement {
 
       <fw-select
         label="Size"
-        value="normal"
+        value=${props.size}
         placeholder="Select size"
         data-id="${this.dataset.id}"
         data-property="size"

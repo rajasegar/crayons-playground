@@ -1,13 +1,10 @@
 import { LitElement, css, html } from 'lit'
 import updateProps from '../updateProps'
+import { store } from '../store'
 
 class FlexPanel extends LitElement {
   static get styles() {
-    return css`
-      h2 {
-        background: yellow;
-      }
-    `
+    return css``
   }
 
   constructor() {
@@ -20,11 +17,13 @@ class FlexPanel extends LitElement {
   }
 
   render() {
+    const { components } = store.getState()
+    const { props } = components[this.dataset.id]
     return html`
       <h2>Flex</h2>
       <fw-select
         label="Flex Direction"
-        value="secondary"
+        value=${props['flex-direction']}
         placeholder="Your choice"
         data-id="${this.dataset.id}"
         data-property="flex-direction"
@@ -39,7 +38,7 @@ class FlexPanel extends LitElement {
 
       <fw-select
         label="Justify Content"
-        value="normal"
+        value=${props['justify-content']}
         placeholder="Select size"
         data-id="${this.dataset.id}"
         data-property="justify-content"
@@ -52,7 +51,7 @@ class FlexPanel extends LitElement {
 
       <fw-select
         label="Align Items"
-        value="normal"
+        value=${props['align-items']}
         placeholder="Select size"
         data-id="${this.dataset.id}"
         data-property="align-items"

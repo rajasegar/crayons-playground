@@ -12,7 +12,6 @@ import { store } from './store'
 import './crayons/fw-flex'
 
 export default function updateEditor() {
-  debugger
   const { components, builderMode } = store.getState()
   const editor = document.getElementById('editor')
   // clear editor

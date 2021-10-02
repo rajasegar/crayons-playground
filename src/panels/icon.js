@@ -1,42 +1,62 @@
-import { LitElement, css, html } from 'lit'
 import { store } from '../store'
 
-class IconPanel extends LitElement {
-  static get styles () {
-    return css`
-    h2 {
-    background: yellow;
-    }
-    `
-  }
+const icons = [
+  'header',
+  'add-contact',
+  'add-note',
+  'add-remove',
+  'agent',
+  'alert',
+  'align-center',
+  'align-justify',
+  'align-left',
+  'align-right',
+  'annotate',
+  'announcement',
+  'arrow-left',
+  'arrow-right',
+  'article-analytics',
+  'article-expand',
+  'article-sso',
+  'at-the-rate',
+  'attachment-forward',
+]
+const template = document.createElement('template')
+template.innerHTML = `
+      <h2>Icon</h2>
+      <label>Name:</label>
+      <input type="text" list="icons" id="txt-icon" placeholder="Enter your icon name" data-property="name"/>
+      <datalist id="icons">
+      ${icons.map((i) => `<option value="${i}">`).join('\n')}
+      </datalist>
+      `
 
-  constructor () {
+class IconPanel extends HTMLElement {
+  constructor() {
     super()
-    this.addEventListener('fwInput', (ev) => {
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
+    const txt$ = this.shadowRoot.querySelector('#txt-icon')
+    const { components } = store.getState()
+    const { props } = components[this.dataset.id]
+    txt$.value = props.name
+
+    txt$.addEventListener('change', (ev) => {
+      console.log(ev)
       const id = this.dataset.id
-      const propName = ev.path[0].dataset.property
+      const propName = ev.target.dataset.property
 
       store.dispatch({
         type: 'UPDATE_PROPS',
         payload: {
           id,
           name: propName,
-          value: ev.detail.value
-        }
+          value: ev.target.value,
+        },
       })
+
       return true
     })
-  }
-
-  render () {
-    return html`
-    <h2>Icon</h2>
-    <fw-input
-  label="Name"
-  placeholder="Enter your icon name"
-  data-property="name">
-</fw-input>
-    `
   }
 }
 
