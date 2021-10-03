@@ -4,6 +4,9 @@ import '../panels/button'
 import '../panels/icon'
 import '../panels/flex'
 import '../panels/checkbox'
+import '../panels/grid'
+import '../panels/heading'
+import '../panels/text'
 
 class InspectorPanel extends HTMLElement {
   static get observedAttributes() {
@@ -35,14 +38,17 @@ class InspectorPanel extends HTMLElement {
           store.dispatch({
             type: 'RESET_PROPS',
             payload: {
-              componentId: this.id
-            }
+              componentId: this.id,
+            },
           })
           break
 
         case 'btn-delete':
           // dispatch delete component  message
-          store.dispatch({ type: 'DELETE_COMPONENT', payload: { componentId: this.id } })
+          store.dispatch({
+            type: 'DELETE_COMPONENT',
+            payload: { componentId: this.id },
+          })
           break
 
         default:
@@ -60,7 +66,7 @@ class InspectorPanel extends HTMLElement {
   }
 
   render() {
-    this.shadowRoot.innerHTML = '';
+    this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
     let panel = ''
     const { components } = store.getState()
@@ -91,6 +97,18 @@ class InspectorPanel extends HTMLElement {
 
       case 'fw-flex':
         panel = `<flex-panel data-id="${this.id}"></flex-panel>`
+        break
+
+      case 'fw-grid':
+        panel = `<grid-panel data-id="${this.id}"></grid-panel>`
+        break
+
+      case 'fw-heading':
+        panel = `<heading-panel data-id="${this.id}"></heading-panel>`
+        break
+
+      case 'fw-text':
+        panel = `<text-panel data-id="${this.id}"></text-panel>`
         break
 
       case 'fw-input':

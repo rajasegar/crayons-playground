@@ -7,7 +7,7 @@ const defaultProps = {
   'fw-checkbox': {
     children: 'I Agree',
     checked: true,
-    label: ''
+    label: '',
   },
   'fw-dropdown-button': {
     label: 'Choose the sport',
@@ -56,6 +56,17 @@ const defaultProps = {
     ],
   },
   'fw-flex': {},
+  'fw-grid': {
+    'template-columns': 'repeat(4, 1fr)',
+    gap: '20px',
+  },
+  'fw-heading': {
+    level: '1',
+    children: 'Hello world',
+  },
+  'fw-text': {
+    children: 'This is a paragraph',
+  },
 }
 
 export default defaultProps

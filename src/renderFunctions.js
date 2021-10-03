@@ -65,6 +65,8 @@ const renderWithChildren = (name, props, children) => {
       case 'fw-label':
       case 'fw-radio':
       case 'fw-datepicker':
+      case 'fw-heading':
+      case 'fw-text':
         child = render(type, props)
         break
 
@@ -73,9 +75,7 @@ const renderWithChildren = (name, props, children) => {
     }
 
     preview.appendChild(child)
-    component.shadowRoot
-      .getElementById('fw-flex-container')
-      .appendChild(preview)
+    component.shadowRoot.querySelector('div').appendChild(preview)
   })
 
   return component

@@ -10,6 +10,9 @@ import {
 import { store } from './store'
 
 import './crayons/fw-flex'
+import './crayons/fw-grid'
+import './crayons/fw-heading'
+import './crayons/fw-text'
 
 export default function updateEditor() {
   const { components, builderMode } = store.getState()
@@ -56,11 +59,14 @@ export default function updateEditor() {
       case 'fw-label':
       case 'fw-radio':
       case 'fw-datepicker':
+      case 'fw-heading':
+      case 'fw-text':
         child = render(type, props)
         break
 
       case 'fw-flex':
-        child = renderWithChildren('fw-flex', props, children)
+      case 'fw-grid':
+        child = renderWithChildren(type, props, children)
         break
 
       default:
