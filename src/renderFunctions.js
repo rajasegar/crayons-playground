@@ -67,6 +67,11 @@ const renderWithChildren = (name, props, children) => {
       case 'fw-datepicker':
       case 'fw-heading':
       case 'fw-text':
+      case 'fw-tag':
+      case 'fw-spinner':
+      case 'fw-textarea':
+      case 'fw-timepicker':
+      case 'fw-toggle':
         child = render(type, props)
         break
 

@@ -1,10 +1,10 @@
-import { LitElement, html } from 'lit'
 import { store } from '../store'
 import generateCode from '../generateCode'
 
-class ToggleCodePanel extends LitElement {
+class ToggleCodePanel extends HTMLElement {
   constructor() {
     super()
+    this.attachShadow({ mode: 'open' })
     this.addEventListener('fwChange', () => {
       const codePanel = document.getElementById('code-panel')
       codePanel.innerHTML = ''
@@ -30,10 +30,15 @@ class ToggleCodePanel extends LitElement {
         codePanel.innerHTML = ''
       }
     })
+    this.render()
   }
 
   render() {
-    return html` <div>Code Panel <fw-toggle size="small"></fw-toggle></div> `
+    this.shadowRoot.innerHTML = ''
+    const template = document.createElement('template')
+    template.innerHTML =
+      ' <div>Code Panel <fw-toggle size="small"></fw-toggle></div> '
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
 

@@ -13,10 +13,17 @@ import './crayons/fw-flex'
 import './crayons/fw-grid'
 import './crayons/fw-heading'
 import './crayons/fw-text'
+import './crayons/fw-box'
 
 export default function updateEditor() {
   const { components, builderMode } = store.getState()
   const editor = document.getElementById('editor')
+  editor.onclick = () => {
+    store.dispatch({
+      type: 'SELECT_COMPONENT',
+      payload: { selectedId: 'root' },
+    })
+  }
   // clear editor
   editor.innerHTML = ''
 
@@ -29,7 +36,8 @@ export default function updateEditor() {
       preview.className = 'preview-wrapper'
     }
 
-    preview.onclick = () => {
+    preview.onclick = (ev) => {
+      ev.stopImmediatePropagation()
       store.dispatch({
         type: 'SELECT_COMPONENT',
         payload: { selectedId: id },
@@ -61,11 +69,19 @@ export default function updateEditor() {
       case 'fw-datepicker':
       case 'fw-heading':
       case 'fw-text':
+      case 'fw-spinner':
+      case 'fw-tabs':
+      case 'fw-tag':
+      case 'fw-textarea':
+      case 'fw-timepicker':
+      case 'fw-toast':
+      case 'fw-toggle':
         child = render(type, props)
         break
 
       case 'fw-flex':
       case 'fw-grid':
+      case 'fw-box':
         child = renderWithChildren(type, props, children)
         break
 

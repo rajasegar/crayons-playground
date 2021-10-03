@@ -1,13 +1,26 @@
 import { store } from '../store'
 import updateProps from '../updateProps'
 
-class ButtonPanel extends HTMLElement {
+class DropdownButtonPanel extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
     this.addEventListener('fwChange', (ev) => {
       const id = this.dataset.id
       updateProps(ev, id)
+      /*
+      const path = ev.path || (ev.composedPath && ev.composedPath())
+      const propName = path[0].dataset.property
+
+      store.dispatch({
+        type: 'UPDATE_PROPS',
+        payload: {
+          id,
+          name: propName,
+          value: ev.detail.value,
+        },
+      })
+      */
     })
 
     this.render()
@@ -18,8 +31,7 @@ class ButtonPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Button</h2>
-      <fw-input value="${props.children}" label="Children" data-property="children"></fw-input>
+      <h2>Dropdown Button</h2>
       <fw-select
         label="Color"
         value=${props.color}
@@ -34,20 +46,10 @@ class ButtonPanel extends HTMLElement {
         <fw-select-option value="text">text</fw-select-option>
       </fw-select>
 
-      <fw-select
-        label="Size"
-        value=${props.size}
-        placeholder="Select size"
-        data-id="${this.dataset.id}"
-        data-property="size"
-      >
-        <fw-select-option value="normal">normal</fw-select-option>
-        <fw-select-option value="mini">mini</fw-select-option>
-        <fw-select-option value="small">small</fw-select-option>
-      </fw-select>
+      <fw-input value="${props.label}" label="Label" data-property="label"></fw-input>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
 
-window.customElements.define('button-panel', ButtonPanel)
+window.customElements.define('dropdown-button-panel', DropdownButtonPanel)

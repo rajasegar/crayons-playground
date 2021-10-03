@@ -67,6 +67,31 @@ const defaultProps = {
   'fw-text': {
     children: 'This is a paragraph',
   },
+  'fw-tag': {
+    text: 'Pending',
+  },
+  'fw-textarea': {
+    label: 'Address',
+    state: 'warning',
+    'state-text': 'Do not enter your temporary address',
+    placeholder: 'Enter your permanent address',
+    rows: 5,
+    cols: 80,
+  },
+  'fw-spinner': {
+    color: 'blue',
+    size: 'large',
+  },
+  'fw-timepicker': {
+    format: 'HH:mm',
+    interval: 60,
+  },
+  'fw-toast': {},
+  'fw-toggle': {
+    checked: true,
+    disabled: false,
+    size: 'large',
+  },
 }
 
 export default defaultProps

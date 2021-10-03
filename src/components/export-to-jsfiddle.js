@@ -14,7 +14,9 @@ cursor: pointer;
 <div>
 <form method="post" action="http://jsfiddle.net/api/post/library/pure" target="check">
 <textarea id="txt-html" name="html"><h1>hello wold</h1></textarea>
-<button id="btn-export" type="submit">Export to JSFiddle</button>
+<button id="btn-export" type="submit">
+Export to JSFiddle <fw-icon name="open-new-tab"></fw-icon>
+</button>
 </form>
 </div>
 `

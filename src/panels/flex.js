@@ -1,25 +1,24 @@
-import { LitElement, css, html } from 'lit'
 import updateProps from '../updateProps'
 import { store } from '../store'
 
-class FlexPanel extends LitElement {
-  static get styles() {
-    return css``
-  }
-
+class FlexPanel extends HTMLElement {
   constructor() {
     super()
+    this.attachShadow({ mode: 'open' })
     this.addEventListener('fwChange', (ev) => {
       const id = this.dataset.id
 
       updateProps(ev, id)
     })
+    this.render()
   }
 
   render() {
     const { components } = store.getState()
     const { props } = components[this.dataset.id]
-    return html`
+    this.shadowRoot.innerHTML = ''
+    const template = document.createElement('template')
+    template.innerHTML = `
       <h2>Flex</h2>
       <fw-select
         label="Flex Direction"
@@ -56,11 +55,15 @@ class FlexPanel extends LitElement {
         data-id="${this.dataset.id}"
         data-property="align-items"
       >
-        <fw-select-option value="normal">normal</fw-select-option>
-        <fw-select-option value="mini">mini</fw-select-option>
-        <fw-select-option value="small">small</fw-select-option>
+        <fw-select-option value="stretch">stretch</fw-select-option>
+        <fw-select-option value="flex-start">flex-start</fw-select-option>
+        <fw-select-option value="center">center</fw-select-option>
+        <fw-select-option value="flex-end">flex-end</fw-select-option>
+        <fw-select-option value="space-between">space-between</fw-select-option>
+        <fw-select-option value="space-around">space-around</fw-select-option>
       </fw-select>
     `
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
 

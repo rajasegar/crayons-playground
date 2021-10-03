@@ -1,9 +1,9 @@
-import { LitElement, html } from 'lit'
 import { store } from '../store'
 
-class ToggleBuilderMode extends LitElement {
+class ToggleBuilderMode extends HTMLElement {
   constructor() {
     super()
+    this.attachShadow({ mode: 'open' })
     this.addEventListener('fwChange', () => {
       console.log('toggle builder mode')
       store.dispatch({
@@ -16,12 +16,16 @@ class ToggleBuilderMode extends LitElement {
         editor.className = 'builder-mode'
       }
     })
+    this.render()
   }
 
   render() {
-    return html`
+    this.shadowRoot.innerHTML = ''
+    const template = document.createElement('template')
+    template.innerHTML = `
       <div>Builder Mode <fw-toggle size="small" checked></fw-toggle></div>
     `
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
 

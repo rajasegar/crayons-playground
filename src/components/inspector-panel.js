@@ -1,5 +1,6 @@
 import { store } from '../store'
 
+import '../panels/default'
 import '../panels/button'
 import '../panels/icon'
 import '../panels/flex'
@@ -7,6 +8,17 @@ import '../panels/checkbox'
 import '../panels/grid'
 import '../panels/heading'
 import '../panels/text'
+import '../panels/dropdown-button'
+import '../panels/datepicker'
+import '../panels/input'
+import '../panels/label'
+import '../panels/radio'
+import '../panels/spinner'
+import '../panels/tag'
+import '../panels/textarea'
+import '../panels/timepicker'
+import '../panels/toggle'
+import '../panels/select'
 
 class InspectorPanel extends HTMLElement {
   static get observedAttributes() {
@@ -51,12 +63,24 @@ class InspectorPanel extends HTMLElement {
           })
           break
 
+        case 'btn-crayon-docs':
+          this._openDocs()
+          break
+
         default:
           console.error('InspectorPanel: Unknown action button')
       }
     })
 
     this.render()
+  }
+
+  _openDocs() {
+    const { components } = store.getState()
+    const { type } = components[this.id]
+    const name = type.replace('fw-', '')
+    const url = `https://crayons.freshworks.com/components/${name}/#usage`
+    window.open(url, '_blank')
   }
 
   attributeChangedCallback(attr, oldAttr, newAttr) {
@@ -85,10 +109,8 @@ class InspectorPanel extends HTMLElement {
         panel = `<checkbox-panel data-id="${this.id}"></checkbox-panel>`
         break
 
-      case 'fw-dropdown-button':
-        break
-
       case 'fw-select':
+        panel = `<select-panel data-id="${this.id}"></select-panel>`
         break
 
       case 'fw-icon':
@@ -111,13 +133,48 @@ class InspectorPanel extends HTMLElement {
         panel = `<text-panel data-id="${this.id}"></text-panel>`
         break
 
+      case 'fw-dropdown-button':
+        panel = `<dropdown-button-panel data-id="${this.id}"></dropdown-button-panel>`
+        break
+
       case 'fw-input':
+        panel = `<input-panel data-id="${this.id}"></input-panel>`
+        break
+
       case 'fw-label':
+        panel = `<label-panel data-id="${this.id}"></label-panel>`
+        break
+
       case 'fw-radio':
+        panel = `<radio-panel data-id="${this.id}"></radio-panel>`
+        break
+
       case 'fw-datepicker':
+        panel = `<datepicker-panel data-id="${this.id}"></datepicker-panel>`
+        break
+
+      case 'fw-spinner':
+        panel = `<spinner-panel data-id="${this.id}"></spinner-panel>`
+        break
+
+      case 'fw-tag':
+        panel = `<tag-panel data-id="${this.id}"></tag-panel>`
+        break
+
+      case 'fw-textarea':
+        panel = `<textarea-panel data-id="${this.id}"></textarea-panel>`
+        break
+
+      case 'fw-timepicker':
+        panel = `<timepicker-panel data-id="${this.id}"></timepicker-panel>`
+        break
+
+      case 'fw-toggle':
+        panel = `<toggle-panel data-id="${this.id}"></toggle-panel>`
         break
 
       default:
+        panel = `<default-panel data-id="${this.id}"></default-panel>`
         console.error('Inspector: Unknown component')
     }
 
@@ -126,6 +183,7 @@ class InspectorPanel extends HTMLElement {
     <fw-button id="btn-copy-code" size="icon" title="Copy component code" color="secondary"><fw-icon name="code"></fw-icon> </fw-button>
     <fw-button id="btn-duplicate" size="icon" title="Duplicate" color="secondary"><fw-icon name="copy"></fw-icon> </fw-button>
     <fw-button id="btn-reset-props" size="icon" title="Reset props" color="secondary"><fw-icon name="refresh"></fw-icon> </fw-button>
+    <fw-button id="btn-crayon-docs" size="icon" title="Crayon Docs" color="secondary"><fw-icon name="add-note"></fw-icon> </fw-button>
     <fw-button id="btn-delete" size="icon" title="Delete" color="secondary"><fw-icon name="delete"></fw-icon> </fw-button>
     </fw-flex>
     `
@@ -137,6 +195,9 @@ class InspectorPanel extends HTMLElement {
         padding: 1em;
         border-left: 1px solid var(--elephant);
         height: 100%;
+      }
+      fw-button {
+      margin: 0 0.5em;
       }
     </style>
       <div class="inspector" id="inspector">

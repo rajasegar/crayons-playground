@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "immer": "^9.0.6",
-    "lit": "^2.0.0",
     "lodash": "^4.17.21",
     "redux": "^4.1.1"
   }
