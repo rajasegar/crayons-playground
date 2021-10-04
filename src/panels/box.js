@@ -5,8 +5,12 @@ class BoxPanel extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    const id = this.dataset.id
     this.addEventListener('fwChange', (ev) => {
-      const id = this.dataset.id
+      updateProps(ev, id)
+    })
+
+    this.shadowRoot.addEventListener('change', (ev) => {
       updateProps(ev, id)
     })
 
@@ -36,7 +40,9 @@ details {
       <details>
       <summary>Margin</summary>
       <div>
-      <fw-input  value="${props.m}" label="All" data-property="m"></fw-input>
+      <fw-input  value="${
+        props.m || ''
+      }" label="All" data-property="m"></fw-input>
       <fw-grid template-columns="repeat(2,1fr" gap="20px">
       <fw-input data-property="mt" placeholder="↑ top"></fw-input>
       <fw-input data-property="mb" placeholder="↓ bottom"></fw-input>
@@ -58,6 +64,10 @@ details {
       </div>
       </details>
 
+      <p><label for="txtBg">Background color:</label></p>
+      <input id="txtBg" type="color" data-property="bg"/>
+      <p><label for="txtColor">Color:</label></p>
+      <input id="txtColor" type="color" data-property="color"/>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

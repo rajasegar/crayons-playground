@@ -1,6 +1,6 @@
-import generateCode from './generateCode';
+import generateCode from './generateCode'
 
-export default function() {
+export default function () {
   const code = generateCode()
 
   const markup = `<!DOCTYPE html>
@@ -182,6 +182,73 @@ class FWGrid extends HTMLElement {
 }
 
 customElements.define('fw-grid', FWGrid)
+
+/* fw-box */
+class FWBox extends HTMLElement {
+  static get observedAttributes() {
+    return [
+      'color',
+      'bg',
+      'm',
+      'p',
+      'mt',
+      'mr',
+      'mb',
+      'ml',
+      'pt',
+      'pr',
+      'pb',
+      'pl',
+    ]
+  }
+
+  constructor() {
+    super()
+    this.attachShadow({ mode: 'open' })
+    const template = document.createElement('template')
+    template.innerHTML =
+      '<div id="fw-crayons-layout-container"><slot></slot></div>'
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+    this.container = this.shadowRoot.getElementById(
+      'fw-crayons-layout-container'
+    )
+
+    this.applyStyles()
+  }
+
+  applyStyles() {
+    this.container.style.display = 'block'
+    this.container.style.padding = '1em'
+
+    const properties = {
+      color: 'color',
+      bg: 'backgroundColor',
+      m: 'margin',
+      p: 'padding',
+      mt: 'marginTop',
+      mr: 'marginRight',
+      mb: 'marginBottom',
+      ml: 'marginLeft',
+      pt: 'paddingTop',
+      pr: 'paddingRight',
+      pb: 'paddingBottom',
+      pl: 'paddingLeft',
+    }
+    Object.keys(properties).forEach((k) => {
+      const _value = this.getAttribute(k)
+      if (_value) {
+        this.container.style[properties[k]] = _value
+      }
+    })
+  }
+
+  attributeChangedCallback() {
+    this.applyStyles()
+  }
+}
+
+customElements.define('fw-box', FWBox)
 
    </script>
     </body>
