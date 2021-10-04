@@ -1,4 +1,4 @@
-import generateCode from '../generateCode'
+import markup from '../jsFiddleTemplate'
 
 const template = document.createElement('template')
 template.innerHTML = `
@@ -12,7 +12,7 @@ cursor: pointer;
 }
 </style>
 <div>
-<form method="post" action="http://jsfiddle.net/api/post/library/pure" target="check">
+<form method="post" action="https://jsfiddle.net/api/post/library/pure" target="check">
 <textarea id="txt-html" name="html"><h1>hello wold</h1></textarea>
 <button id="btn-export" type="submit">
 Export to JSFiddle <fw-icon name="open-new-tab"></fw-icon>
@@ -26,20 +26,9 @@ class ExportToJSFiddle extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
     const btn$ = this.shadowRoot.querySelector('#btn-export')
-    btn$.addEventListener('click', (ev) => {
-      const code = generateCode()
+    btn$.addEventListener('click', () => {
       const txt$ = this.shadowRoot.querySelector('#txt-html')
-      txt$.value = `<!DOCTYPE html>
-    <html>
-    <head>
-    <title>Crayons Playground - JSFiddle</title>
-    </head>
-    <body>
-    ${code}
-   <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script> 
-    </body>
-    </html>
-    `
+      txt$.value = markup()
       return true
     })
   }

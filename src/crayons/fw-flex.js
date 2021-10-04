@@ -1,19 +1,5 @@
 import { store } from '../store'
 
-const template = document.createElement('template')
-template.innerHTML = `
-<style>
-.preview-wrapper {
-  margin: 0.25em;
-  padding: 0.5em;
-  border: 1px dashed black;
-}
-
-.preview-wrapper:hover {
-  border: 1px solid var(--elephant);
-}
-</style>
-  <div id="fw-flex-container"><slot></slot></div>`
 class FWFlex extends HTMLElement {
   static get observedAttributes() {
     return ['flex-direction', 'justify-content', 'align-items']
@@ -22,13 +8,14 @@ class FWFlex extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    const template = document.createElement('template')
+    template.innerHTML = '<div id="fw-crayons-layout-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.container = this.shadowRoot.getElementById('fw-flex-container')
+    this.container = this.shadowRoot.getElementById('fw-crayons-layout-container')
     this.container.addEventListener('drop', (ev) => {
       ev.preventDefault()
       ev.stopImmediatePropagation()
       const id = ev.dataTransfer.getData('id')
-      // ev.target.appendChild(document.getElementById(id));
       const parentId = this.parentNode.id
       const payload = {
         type: id,

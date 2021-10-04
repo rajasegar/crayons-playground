@@ -14,10 +14,10 @@ class FWBox extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
     const template = document.createElement('template')
-    template.innerHTML = '<div id="fw-box-container"><slot></slot></div>'
+    template.innerHTML = '<div id="fw-crayons-layout-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.container = this.shadowRoot.getElementById('fw-box-container')
+    this.container = this.shadowRoot.getElementById('fw-crayons-layout-container')
     this.container.addEventListener('drop', (ev) => {
       ev.preventDefault()
       ev.stopImmediatePropagation()

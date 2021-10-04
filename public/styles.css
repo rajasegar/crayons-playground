@@ -108,3 +108,17 @@ background-color: rgb(237, 242, 246);
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
     cursor: col-resize;
 }
+
+fw-flex::part(preview),
+fw-grid::part(preview), 
+fw-box::part(preview) {
+  margin: 0.25em;
+  padding: 0.5em;
+  border: 1px dashed black;
+}
+
+fw-flex::part(preview):hover,
+fw-grid::part(preview):hover,
+fw-box::part(preview):hover {
+  border: 1px solid var(--elephant);
+}

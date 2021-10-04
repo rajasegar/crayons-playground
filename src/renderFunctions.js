@@ -29,6 +29,7 @@ const renderWithChildren = (name, props, children) => {
     const { type, props } = components[id]
     const preview = document.createElement('div')
     preview.id = id
+    preview.setAttribute('part', 'preview')
 
     if (builderMode) {
       preview.className = 'preview-wrapper'
@@ -80,7 +81,7 @@ const renderWithChildren = (name, props, children) => {
     }
 
     preview.appendChild(child)
-    component.shadowRoot.querySelector('div').appendChild(preview)
+    component.shadowRoot.querySelector('#fw-crayons-layout-container').appendChild(preview)
   })
 
   return component

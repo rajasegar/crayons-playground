@@ -6,21 +6,6 @@ const properties = {
   gap: 'gap',
 }
 
-const template = document.createElement('template')
-template.innerHTML = `
-<style>
-.preview-wrapper {
-  margin: 0.25em;
-  padding: 0.5em;
-  border: 1px dashed black;
-}
-
-.preview-wrapper:hover {
-  border: 1px solid var(--elephant);
-}
-</style>
-  <div id="fw-grid-container"><slot></slot></div>`
-
 class FWGrid extends HTMLElement {
   static get observedAttributes() {
     return [
@@ -42,8 +27,10 @@ class FWGrid extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    const template = document.createElement('template')
+    template.innerHTML = '<div id="fw-crayons-layout-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.container = this.shadowRoot.getElementById('fw-grid-container')
+    this.container = this.shadowRoot.getElementById('fw-crayons-layout-container')
     this.container.addEventListener('drop', (ev) => {
       ev.preventDefault()
       ev.stopImmediatePropagation()
