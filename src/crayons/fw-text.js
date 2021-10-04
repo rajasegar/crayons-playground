@@ -1,6 +1,6 @@
 class FWText extends HTMLElement {
   static get observedAttributes() {
-    return ['color']
+    return ['color', 'text-align', 'font-weight', 'font-style', 'line-height', 'letter-spacing']
   }
 
   constructor() {
@@ -23,7 +23,21 @@ class FWText extends HTMLElement {
   }
 
   applyStyles() {
-    this.para.style.color = this.getAttribute('color')
+    const attrs = {
+      color: 'color',
+      'text-align': 'textAlign',
+      'font-weight': 'fontWeight',
+      'font-style': 'fontStyle',
+      'line-height': 'lineHeight',
+      'letter-spacing': 'letterSpacing'
+    }
+
+    Object.keys(attrs).forEach(attr => {
+      const value = this.getAttribute(attr)
+      if (value) {
+        this.para.style[attrs[attr]] = value
+      }
+    });
   }
 }
 

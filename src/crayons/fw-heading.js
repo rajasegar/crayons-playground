@@ -1,6 +1,6 @@
 class FWHeading extends HTMLElement {
   static get observedAttributes() {
-    return ['level', 'color']
+    return ['level', 'color', 'text-align', 'font-weight', 'font-style', 'line-height', 'letter-spacing']
   }
 
   constructor() {
@@ -23,14 +23,27 @@ class FWHeading extends HTMLElement {
   attributeChangedCallback(attr) {
     if (attr === 'level') {
       this.render()
-    }
-    if (attr === 'color') {
+    } else {
       this.applyStyles()
     }
   }
 
   applyStyles() {
-    this.heading.style.color = this.getAttribute('color')
+    const attrs = {
+      color: 'color',
+      'text-align': 'textAlign',
+      'font-weight': 'fontWeight',
+      'font-style': 'fontStyle',
+      'line-height': 'lineHeight',
+      'letter-spacing': 'letterSpacing'
+    }
+
+    Object.keys(attrs).forEach(attr => {
+      const value = this.getAttribute(attr)
+      if (value) {
+        this.heading.style[attrs[attr]] = value
+      }
+    });
   }
 }
 
