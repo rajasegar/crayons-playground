@@ -89,8 +89,6 @@ customElements.define('fw-heading', FWHeading)
 /*  fw-flex */
 
 
-const template = document.createElement('template')
-template.innerHTML = '<div id="fw-flex-container"><slot></slot></div>'
 class FWFlex extends HTMLElement {
   static get observedAttributes() {
     return ['flex-direction', 'justify-content', 'align-items']
@@ -99,6 +97,8 @@ class FWFlex extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    const template = document.createElement('template')
+    template.innerHTML = '<div id="fw-flex-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
     this.container = this.shadowRoot.getElementById('fw-flex-container')
 
@@ -134,8 +134,6 @@ const properties = {
   gap: 'gap',
 }
 
-const template = document.createElement('template')
-template.innerHTML = '<div id="fw-grid-container"><slot></slot></div>'
 
 class FWGrid extends HTMLElement {
   static get observedAttributes() {
@@ -158,6 +156,8 @@ class FWGrid extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    const template = document.createElement('template')
+    template.innerHTML = '<div id="fw-grid-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
     this.container = this.shadowRoot.getElementById('fw-grid-container')
 
