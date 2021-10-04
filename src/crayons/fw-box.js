@@ -11,10 +11,14 @@ class FWBox extends HTMLElement {
       'mr',
       'mb',
       'ml',
+      'mx',
+      'my',
       'pt',
       'pr',
       'pb',
       'pl',
+      'px',
+      'py',
     ]
   }
 
@@ -71,7 +75,30 @@ class FWBox extends HTMLElement {
     Object.keys(properties).forEach((k) => {
       const _value = this.getAttribute(k)
       if (_value) {
-        this.container.style[properties[k]] = _value
+        switch (k) {
+          case 'mx':
+            this.container.style.marginRight = _value
+            this.container.style.marginLeft = _value
+            break
+
+          case 'my':
+            this.container.style.marginTop = _value
+            this.container.style.marginBottom = _value
+            break
+
+          case 'px':
+            this.container.style.paddingLeft = _value
+            this.container.style.paddingRight = _value
+            break
+
+          case 'py':
+            this.container.style.paddingBottom = _value
+            this.container.style.paddingTop = _value
+            break
+
+          default:
+            this.container.style[properties[k]] = _value
+        }
       }
     })
   }
