@@ -19,6 +19,7 @@ import '../panels/textarea'
 import '../panels/timepicker'
 import '../panels/toggle'
 import '../panels/select'
+import '../panels/box'
 
 class InspectorPanel extends HTMLElement {
   static get observedAttributes() {
@@ -123,6 +124,10 @@ class InspectorPanel extends HTMLElement {
 
       case 'fw-grid':
         panel = `<grid-panel data-id="${this.id}"></grid-panel>`
+        break
+
+      case 'fw-box':
+        panel = `<box-panel data-id="${this.id}"></box-panel>`
         break
 
       case 'fw-heading':

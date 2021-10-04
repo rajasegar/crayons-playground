@@ -1,23 +1,34 @@
 import { store } from '../store'
 
-const properties = {
-  color: 'color',
-  bg: 'backgroundColor',
-}
-
 class FWBox extends HTMLElement {
   static get observedAttributes() {
-    return ['color', 'bg']
+    return [
+      'color',
+      'bg',
+      'm',
+      'p',
+      'mt',
+      'mr',
+      'mb',
+      'ml',
+      'pt',
+      'pr',
+      'pb',
+      'pl',
+    ]
   }
 
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
     const template = document.createElement('template')
-    template.innerHTML = '<div id="fw-crayons-layout-container"><slot></slot></div>'
+    template.innerHTML =
+      '<div id="fw-crayons-layout-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.container = this.shadowRoot.getElementById('fw-crayons-layout-container')
+    this.container = this.shadowRoot.getElementById(
+      'fw-crayons-layout-container'
+    )
     this.container.addEventListener('drop', (ev) => {
       ev.preventDefault()
       ev.stopImmediatePropagation()
@@ -43,6 +54,20 @@ class FWBox extends HTMLElement {
     this.container.style.display = 'block'
     this.container.style.padding = '1em'
 
+    const properties = {
+      color: 'color',
+      bg: 'backgroundColor',
+      m: 'margin',
+      p: 'padding',
+      mt: 'marginTop',
+      mr: 'marginRight',
+      mb: 'marginBottom',
+      ml: 'marginLeft',
+      pt: 'paddingTop',
+      pr: 'paddingRight',
+      pb: 'paddingBottom',
+      pl: 'paddingLeft',
+    }
     Object.keys(properties).forEach((k) => {
       const _value = this.getAttribute(k)
       if (_value) {

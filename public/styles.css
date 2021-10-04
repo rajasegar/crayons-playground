@@ -122,3 +122,4 @@ fw-grid::part(preview):hover,
 fw-box::part(preview):hover {
   border: 1px solid var(--elephant);
 }
+
