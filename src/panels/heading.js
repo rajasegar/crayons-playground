@@ -6,10 +6,15 @@ class HeadingPanel extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
 
+    const id = this.dataset.id
     this.addEventListener('fwChange', (ev) => {
-      const id = this.dataset.id
       updateProps(ev, id)
     })
+
+    this.shadowRoot.addEventListener('change', (ev) => {
+      updateProps(ev, id)
+    })
+
     this.render()
   }
 
@@ -35,6 +40,8 @@ class HeadingPanel extends HTMLElement {
         <fw-select-option value="5">5</fw-select-option>
         <fw-select-option value="6">6</fw-select-option>
       </fw-select>
+      <p><label for="txtColor">Color:</label></p>
+      <input id="txtColor" type="color" data-property="color"/>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

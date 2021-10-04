@@ -6,10 +6,15 @@ class TextPanel extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
 
+    const id = this.dataset.id
     this.addEventListener('fwChange', (ev) => {
-      const id = this.dataset.id
       updateProps(ev, id)
     })
+
+    this.shadowRoot.addEventListener('change', (ev) => {
+      updateProps(ev, id)
+    })
+
     this.render()
   }
 
@@ -20,6 +25,9 @@ class TextPanel extends HTMLElement {
     template.innerHTML = `
       <h2>Text</h2>
       <fw-textarea value="${props.children}" label="Children" data-property="children"></fw-textarea>
+
+      <p><label for="txtColor">Color:</label></p>
+      <input id="txtColor" type="color" data-property="color"/>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
