@@ -57,8 +57,8 @@ const defaultProps = {
   },
   'fw-flex': {},
   'fw-grid': {
-    'template-columns': 'repeat(4, 1fr)',
-    gap: '20px',
+    'grid-template-columns': 'repeat(4, 1fr)',
+    'grid-gap': '20px',
   },
   'fw-heading': {
     level: '1',

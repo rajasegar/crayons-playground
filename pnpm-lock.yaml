@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/core': ^7.15.5
+  '@rajasegar/styled-web-components': ^1.0.0
   babel-loader: ^8.2.2
   copy-webpack-plugin: ^9.0.1
   css-loader: ^6.3.0
@@ -22,6 +23,7 @@ specifiers:
   webpack-dev-server: ^4.3.0
 
 dependencies:
+  '@rajasegar/styled-web-components': 1.0.0
   immer: 9.0.6
   lodash: 4.17.21
   redux: 4.1.1
@@ -329,6 +331,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@rajasegar/styled-web-components/1.0.0:
+    resolution: {integrity: sha512-mFMz4YGts/xnJ8qsV4SP/M19ZwyNCIFDuyRz0Koq+bgBxDD+lZ8iczQPQXsjPvlPMjQZImP2V4/j0DrwhQDM8A==}
+    dev: false
 
   /@types/eslint-scope/3.7.1:
     resolution: {integrity: sha512-SCFeogqiptms4Fg29WpOTk5nHIzfpKCemSN63ksBQYKTcXoJEmJagV+DhVmbapZzY4/5YaOV1nZwrsU79fFm1g==}

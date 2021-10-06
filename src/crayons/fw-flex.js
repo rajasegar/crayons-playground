@@ -1,10 +1,7 @@
 import { store } from '../store'
+import { SpaceProps, LayoutProps, FlexboxProps } from '@rajasegar/styled-web-components'
 
-class FWFlex extends HTMLElement {
-  static get observedAttributes() {
-    return ['flex-direction', 'justify-content', 'align-items']
-  }
-
+class FWFlex extends FlexboxProps(SpaceProps(LayoutProps(HTMLElement))) {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -30,24 +27,14 @@ class FWFlex extends HTMLElement {
       ev.preventDefault()
     })
 
-    this.applyStyles()
-  }
-
-  applyStyles() {
     this.container.style.display = 'flex'
     this.container.style.padding = '1em'
-    const flexDirection = this.getAttribute('flex-direction')
-    if (flexDirection) {
-      this.container.style.flexDirection = flexDirection
-    }
-    const justifyContent = this.getAttribute('justify-content')
-    if (justifyContent) {
-      this.container.style.justifyContent = justifyContent
-    }
   }
 
-  attributeChangedCallback() {
-    this.applyStyles()
+  attributeChangedCallback(attr) {
+    if (super.attributeChangedCallback) {
+      super.attributeChangedCallback(attr)
+    }
   }
 }
 

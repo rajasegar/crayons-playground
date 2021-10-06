@@ -1,29 +1,7 @@
 import { store } from '../store'
+import { SpaceProps, GridProps } from '@rajasegar/styled-web-components'
 
-const properties = {
-  'template-columns': 'gridTemplateColumns',
-  'template-rows': 'gridTemplateRows',
-  gap: 'gap',
-}
-
-class FWGrid extends HTMLElement {
-  static get observedAttributes() {
-    return [
-      'template-columns',
-      'template-rows',
-      'gap',
-      'row-gap',
-      'column-gap',
-      'auto-columns',
-      'column',
-      'row',
-      'auto-flow',
-      'auto-rows',
-      'area',
-      'template-areas',
-    ]
-  }
-
+class FWGrid extends GridProps(SpaceProps(HTMLElement)) {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -49,23 +27,14 @@ class FWGrid extends HTMLElement {
       ev.preventDefault()
     })
 
-    this.applyStyles()
-  }
-
-  applyStyles() {
     this.container.style.display = 'grid'
     this.container.style.padding = '1em'
-
-    Object.keys(properties).forEach((k) => {
-      const _value = this.getAttribute(k)
-      if (_value) {
-        this.container.style[properties[k]] = _value
-      }
-    })
   }
 
-  attributeChangedCallback() {
-    this.applyStyles()
+  attributeChangedCallback(attr) {
+    if (super.attributeChangedCallback) {
+      super.attributeChangedCallback(attr)
+    }
   }
 }
 

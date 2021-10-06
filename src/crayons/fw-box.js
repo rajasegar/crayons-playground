@@ -1,27 +1,7 @@
 import { store } from '../store'
+import { ColorProps, SpaceProps, LayoutProps } from '@rajasegar/styled-web-components'
 
-class FWBox extends HTMLElement {
-  static get observedAttributes() {
-    return [
-      'color',
-      'bg',
-      'm',
-      'p',
-      'mt',
-      'mr',
-      'mb',
-      'ml',
-      'mx',
-      'my',
-      'pt',
-      'pr',
-      'pb',
-      'pl',
-      'px',
-      'py',
-    ]
-  }
-
+class FWBox extends ColorProps(SpaceProps(LayoutProps(HTMLElement))) {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -51,60 +31,14 @@ class FWBox extends HTMLElement {
       ev.preventDefault()
     })
 
-    this.applyStyles()
-  }
-
-  applyStyles() {
     this.container.style.display = 'block'
     this.container.style.padding = '1em'
-
-    const properties = {
-      color: 'color',
-      bg: 'backgroundColor',
-      m: 'margin',
-      p: 'padding',
-      mt: 'marginTop',
-      mr: 'marginRight',
-      mb: 'marginBottom',
-      ml: 'marginLeft',
-      pt: 'paddingTop',
-      pr: 'paddingRight',
-      pb: 'paddingBottom',
-      pl: 'paddingLeft',
-    }
-    Object.keys(properties).forEach((k) => {
-      const _value = this.getAttribute(k)
-      if (_value) {
-        switch (k) {
-          case 'mx':
-            this.container.style.marginRight = _value
-            this.container.style.marginLeft = _value
-            break
-
-          case 'my':
-            this.container.style.marginTop = _value
-            this.container.style.marginBottom = _value
-            break
-
-          case 'px':
-            this.container.style.paddingLeft = _value
-            this.container.style.paddingRight = _value
-            break
-
-          case 'py':
-            this.container.style.paddingBottom = _value
-            this.container.style.paddingTop = _value
-            break
-
-          default:
-            this.container.style[properties[k]] = _value
-        }
-      }
-    })
   }
 
-  attributeChangedCallback() {
-    this.applyStyles()
+  attributeChangedCallback(attr) {
+    if (super.attributeChangedCallback) {
+      super.attributeChangedCallback(attr)
+    }
   }
 }
 

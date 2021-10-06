@@ -1,6 +1,10 @@
-class FWHeading extends HTMLElement {
+import { ColorProps, TypographyProps } from '@rajasegar/styled-web-components'
+
+class FWHeading extends TypographyProps(ColorProps(HTMLElement)) {
   static get observedAttributes() {
-    return ['level', 'color', 'text-align', 'font-weight', 'font-style', 'line-height', 'letter-spacing']
+    const ownAtts = ['level']
+    const _observedAttrs = super.observedAttributes ? [...super.observedAttributes, ...ownAtts] : ownAtts;
+    return _observedAttrs;
   }
 
   constructor() {
@@ -16,34 +20,17 @@ class FWHeading extends HTMLElement {
     const heading = `h${this.getAttribute('level')}`
     template.innerHTML = `<${heading}><slot></slot></${heading}>`
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.heading = this.shadowRoot.querySelector(`h${this.level}`)
-    this.applyStyles()
+    this.container = this.shadowRoot.querySelector(`h${this.level}`)
   }
 
   attributeChangedCallback(attr) {
     if (attr === 'level') {
       this.render()
     } else {
-      this.applyStyles()
-    }
-  }
-
-  applyStyles() {
-    const attrs = {
-      color: 'color',
-      'text-align': 'textAlign',
-      'font-weight': 'fontWeight',
-      'font-style': 'fontStyle',
-      'line-height': 'lineHeight',
-      'letter-spacing': 'letterSpacing'
-    }
-
-    Object.keys(attrs).forEach(attr => {
-      const value = this.getAttribute(attr)
-      if (value) {
-        this.heading.style[attrs[attr]] = value
+      if (super.attributeChangedCallback) {
+        super.attributeChangedCallback(attr)
       }
-    });
+    }
   }
 }
 

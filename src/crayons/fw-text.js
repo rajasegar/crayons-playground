@@ -1,8 +1,6 @@
-class FWText extends HTMLElement {
-  static get observedAttributes() {
-    return ['color', 'text-align', 'font-weight', 'font-style', 'line-height', 'letter-spacing']
-  }
+import { ColorProps, TypographyProps } from '@rajasegar/styled-web-components'
 
+class FWText extends TypographyProps(ColorProps(HTMLElement)) {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -14,30 +12,13 @@ class FWText extends HTMLElement {
     const template = document.createElement('template')
     template.innerHTML = '<p><slot></slot></p>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.para = this.shadowRoot.querySelector('p')
-    this.applyStyles()
+    this.container = this.shadowRoot.querySelector('p')
   }
 
-  attributeChangedCallback() {
-    this.applyStyles()
-  }
-
-  applyStyles() {
-    const attrs = {
-      color: 'color',
-      'text-align': 'textAlign',
-      'font-weight': 'fontWeight',
-      'font-style': 'fontStyle',
-      'line-height': 'lineHeight',
-      'letter-spacing': 'letterSpacing'
+  attributeChangedCallback(attr) {
+    if (super.attributeChangedCallback) {
+      super.attributeChangedCallback(attr)
     }
-
-    Object.keys(attrs).forEach(attr => {
-      const value = this.getAttribute(attr)
-      if (value) {
-        this.para.style[attrs[attr]] = value
-      }
-    });
   }
 }
 
