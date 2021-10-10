@@ -45,6 +45,7 @@ class ButtonPanel extends HTMLElement {
         <fw-select-option value="mini">mini</fw-select-option>
         <fw-select-option value="small">small</fw-select-option>
       </fw-select>
+      <fw-input label="Custom Prop" data-property="custom-prop"></fw-input>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

@@ -15,6 +15,8 @@ import './crayons/fw-heading'
 import './crayons/fw-text'
 import './crayons/fw-box'
 
+import './previews/modal'
+
 export default function updateEditor() {
   const { components, builderMode } = store.getState()
   const editor = document.getElementById('editor')
@@ -83,6 +85,10 @@ export default function updateEditor() {
       case 'fw-grid':
       case 'fw-box':
         child = renderWithChildren(type, props, children)
+        break
+
+      case 'fw-modal':
+        child = renderWithChildren('modal-preview', props, children)
         break
 
       default:

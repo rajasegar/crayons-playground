@@ -98,6 +98,10 @@ background-color: rgb(237, 242, 246);
   border: 1px solid var(--elephant);
 }
 
+.preview-wrapper > fw-modal {
+  padding: 1em;
+}
+
 .gutter {
     background-color: var(--elephant);
     background-repeat: no-repeat;
@@ -111,7 +115,8 @@ background-color: rgb(237, 242, 246);
 
 fw-flex::part(preview),
 fw-grid::part(preview), 
-fw-box::part(preview) {
+fw-box::part(preview),
+modal-preview::part(preview) {
   margin: 0.25em;
   padding: 0.5em;
   border: 1px dashed black;
@@ -119,7 +124,8 @@ fw-box::part(preview) {
 
 fw-flex::part(preview):hover,
 fw-grid::part(preview):hover,
-fw-box::part(preview):hover {
+fw-box::part(preview):hover,
+modal-preview::part(preview):hover {
   border: 1px solid var(--elephant);
 }
 

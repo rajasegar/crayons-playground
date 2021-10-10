@@ -92,6 +92,11 @@ const defaultProps = {
     disabled: false,
     size: 'large',
   },
+  'fw-modal': {
+    id: 'mymodal',
+    'title-text': 'Welcome',
+    size: 'large',
+  },
 }
 
 export default defaultProps

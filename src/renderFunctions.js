@@ -76,6 +76,7 @@ const renderWithChildren = (name, props, children) => {
       case 'fw-box':
       case 'fw-flex':
       case 'fw-grid':
+      case 'fw-modal':
         child = render(type, props)
         break
 

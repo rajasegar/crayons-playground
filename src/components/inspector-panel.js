@@ -20,6 +20,7 @@ import '../panels/timepicker'
 import '../panels/toggle'
 import '../panels/select'
 import '../panels/box'
+import '../panels/modal'
 
 class InspectorPanel extends HTMLElement {
   static get observedAttributes() {
@@ -176,6 +177,10 @@ class InspectorPanel extends HTMLElement {
 
       case 'fw-toggle':
         panel = `<toggle-panel data-id="${this.id}"></toggle-panel>`
+        break
+
+      case 'fw-modal':
+        panel = `<modal-panel data-id="${this.id}"></modal-panel>`
         break
 
       default:
