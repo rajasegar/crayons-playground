@@ -23,7 +23,6 @@ class TextPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Text</h2>
       <fw-textarea value="${props.children}" label="Children" data-property="children"></fw-textarea>
 
       <fw-select

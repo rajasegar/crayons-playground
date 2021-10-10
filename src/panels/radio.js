@@ -18,7 +18,6 @@ class RadioPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Radio</h2>
       <fw-input label="Label" value="${props.label}" data-property="label"></fw-input>
       <fw-input label="Children" value="${props.children}" data-property="children"></fw-input>
     `

@@ -31,7 +31,6 @@ class DropdownButtonPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Dropdown Button</h2>
       <fw-select
         label="Color"
         value=${props.color}

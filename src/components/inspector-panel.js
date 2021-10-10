@@ -1,5 +1,7 @@
 import { store } from '../store'
 
+import getComponentNameFromType from '../utils/getComponentNameFromType'
+
 import '../panels/default'
 import '../panels/button'
 import '../panels/icon'
@@ -100,7 +102,7 @@ class InspectorPanel extends HTMLElement {
 
     switch (type) {
       case 'root':
-        panel = '<div><h2>Document</h2></div>'
+        panel = '<div></div>'
         break
 
       case 'fw-button':
@@ -202,15 +204,21 @@ class InspectorPanel extends HTMLElement {
     <style>
       .inspector {
         background-color: var(--smoke);
-        padding: 1em;
         border-left: 1px solid var(--elephant);
         height: 100%;
       }
       fw-button {
       margin: 0 0.5em;
       }
+      h3 {
+      padding: 0.25em 0.5em;
+      margin: 0;
+      background: #fefcbf;
+      color: #5f370e;
+      }
     </style>
       <div class="inspector" id="inspector">
+      <h3>${getComponentNameFromType(type)}</h3>
       ${this.id !== 'root' ? actionButtons : ''}
       ${panel}
       </div>

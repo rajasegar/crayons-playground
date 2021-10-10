@@ -1,4 +1,3 @@
-import { store } from '../store'
 import updateProps from '../updateProps'
 
 class DefaultPanel extends HTMLElement {
@@ -14,14 +13,8 @@ class DefaultPanel extends HTMLElement {
   }
 
   render() {
-    const { components } = store.getState()
-    const { type } = components[this.dataset.id]
-    let name = type.replace('fw-', '')
-    name = name[0].toUpperCase() + name.slice(1)
     const template = document.createElement('template')
-    template.innerHTML = `
-      <h2>${name}</h2>
-    `
+    template.innerHTML = ''
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }

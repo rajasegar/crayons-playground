@@ -17,7 +17,6 @@ class GridPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Grid</h2>
       <fw-input label="Template Columns" value="${props['grid-template-columns']}" data-property="grid-template-columns"></fw-input>
       <fw-input label="Template Rows" value="${props['grid-template-rows']}" data-property="grid-template-rows"></fw-input>
       <fw-input label="Gap" value="${props['grid-gap']}" data-property="grid-gap"></fw-input>

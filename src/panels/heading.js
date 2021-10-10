@@ -23,7 +23,6 @@ class HeadingPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Heading</h2>
       <fw-input value="${props.children}" label="Children" data-property="children"></fw-input>
 
       <fw-select

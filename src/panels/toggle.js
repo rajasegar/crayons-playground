@@ -18,8 +18,6 @@ class TogglePanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Toggle</h2>
-
       <fw-select
         label="Size"
         value=${props.size}

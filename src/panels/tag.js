@@ -18,7 +18,6 @@ class TagPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Tag</h2>
       <fw-input value="${props.text}" label="Text" data-property="text"></fw-input>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))

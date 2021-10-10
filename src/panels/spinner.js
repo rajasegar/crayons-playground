@@ -15,12 +15,9 @@ class SpinnerPanel extends HTMLElement {
 
   render() {
     const { components } = store.getState()
-    const { type, props } = components[this.dataset.id]
-    let name = type.replace('fw-', '')
-    name = name[0].toUpperCase() + name.slice(1)
+    const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>${name}</h2>
       <fw-input label="Color" value="${props.color}" data-property="color"></fw-input>
       <fw-select
         label="Size"

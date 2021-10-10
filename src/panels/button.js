@@ -18,7 +18,12 @@ class ButtonPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Button</h2>
+    <style>
+    .container {
+    padding: 0.5em;
+    }
+    </style>
+    <div class="container">
       <fw-input value="${props.children}" label="Children" data-property="children"></fw-input>
       <fw-select
         label="Color"
@@ -45,7 +50,8 @@ class ButtonPanel extends HTMLElement {
         <fw-select-option value="mini">mini</fw-select-option>
         <fw-select-option value="small">small</fw-select-option>
       </fw-select>
-      <fw-input label="Custom Prop" data-property="custom-prop"></fw-input>
+      <fw-input placeholder="prop=value" label="Custom Prop" data-property="custom-prop"></fw-input>
+      </div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

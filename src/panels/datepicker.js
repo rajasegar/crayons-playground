@@ -18,7 +18,6 @@ class DatepickerPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Datepicker</h2>
       <fw-input label="Format" value="${props.dateformat}" data-property="date-format"></fw-input>
       <fw-select
         label="Mode"

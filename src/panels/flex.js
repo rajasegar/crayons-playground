@@ -19,7 +19,6 @@ class FlexPanel extends HTMLElement {
     this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Flex</h2>
       <fw-select
         label="Flex Direction"
         value=${props['flex-direction']}

@@ -18,7 +18,6 @@ class LabelPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Label</h2>
       <fw-select
         label="Color"
         value=${props.color}

@@ -35,8 +35,7 @@ header {
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 200px 1fr 300px;
+  display: flex;
   height: calc(100vh - 32px);
 }
 
@@ -44,10 +43,12 @@ header {
   background-color: var(--sidebar-bg);
   padding: 1em 0.5em;
   color: white;
+  flex: 0 0 12rem;
 }
 
-.editor-wrapper {
+#editor-wrapper {
   display: flex;
+  flex: 1 1 0%;
   flex-direction: column;
 }
 
@@ -62,6 +63,10 @@ header {
   padding: 1em;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.inspector { 
+  flex: 0 0 15rem;
 }
 
 .builder-mode {

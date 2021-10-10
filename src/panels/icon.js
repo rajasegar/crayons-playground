@@ -23,7 +23,6 @@ const icons = [
 ]
 const template = document.createElement('template')
 template.innerHTML = `
-      <h2>Icon</h2>
       <label>Name:</label>
       <input type="text" list="icons" id="txt-icon" placeholder="Enter your icon name" data-property="name"/>
       <datalist id="icons">

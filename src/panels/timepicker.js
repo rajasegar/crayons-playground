@@ -18,7 +18,6 @@ class TimepickerPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
-      <h2>Timepicker</h2>
       <fw-input value="${props.format}" label="Format" data-property="format"></fw-input>
       <fw-input value="${props.interval}" label="Interval (in minutes)" data-property="interval" type="number"></fw-input>
 

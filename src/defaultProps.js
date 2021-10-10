@@ -95,7 +95,7 @@ const defaultProps = {
   'fw-modal': {
     id: 'mymodal',
     'title-text': 'Welcome',
-    size: 'large',
+    size: 'standard',
   },
 }
 
