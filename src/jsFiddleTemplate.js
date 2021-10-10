@@ -11,15 +11,19 @@ export default function () {
     <body>
     ${code}
    <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script> 
-   <script>
+   <script type="module">
+   import { 
+   FlexboxProps, 
+   GridProps, 
+   SpaceProps,
+   TypographyProps,
+   ColorProps,
+   } from 'https://unpkg.com/@rajasegar/styled-web-components@2.0.2/dist/styled-web-components.min.js'
 
 
    /* fw-text */
 
 class FWText extends HTMLElement {
-  static get observedAttributes() {
-    return ['color']
-  }
 
   constructor() {
     super()
@@ -30,27 +34,17 @@ class FWText extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
-    template.innerHTML = '<p><slot></slot></p>'
+    template.innerHTML = '<style>:host { display: block; }</style><slot></slot>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.para = this.shadowRoot.querySelector('p')
-    this.applyStyles()
-  }
-
-  attributeChangedCallback() {
-    this.applyStyles()
-  }
-
-  applyStyles() {
-    this.para.style.color = this.getAttribute('color')
   }
 }
 
-customElements.define('fw-text', FWText)
+customElements.define('fw-text', ColorProps(TypographyProps(FWText)))
    /* fw-heading */
 
 class FWHeading extends HTMLElement {
   static get observedAttributes() {
-    return ['level', 'color']
+    return ['level']
   }
 
   constructor() {
@@ -88,167 +82,45 @@ customElements.define('fw-heading', FWHeading)
 
 /*  fw-flex */
 
-
 class FWFlex extends HTMLElement {
-  static get observedAttributes() {
-    return ['flex-direction', 'justify-content', 'align-items']
-  }
-
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
     const template = document.createElement('template')
-    template.innerHTML = '<div id="fw-flex-container"><slot></slot></div>'
+    template.innerHTML = '<style>:host { display: flex; } </style><slot></slot>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.container = this.shadowRoot.getElementById('fw-flex-container')
-
-    this.applyStyles()
-  }
-
-  applyStyles() {
-    this.container.style.display = 'flex'
-    this.container.style.padding = '1em'
-    const flexDirection = this.getAttribute('flex-direction')
-    if (flexDirection) {
-      this.container.style.flexDirection = flexDirection
-    }
-    const justifyContent = this.getAttribute('justify-content')
-    if (justifyContent) {
-      this.container.style.justifyContent = justifyContent
-    }
-  }
-
-  attributeChangedCallback() {
-    this.applyStyles()
   }
 }
 
-customElements.define('fw-flex', FWFlex)
+customElements.define('fw-flex', FlexboxProps(FWFlex))
 
 /* fw-grid */ 
 
-
-const properties = {
-  'template-columns': 'gridTemplateColumns',
-  'template-rows': 'gridTemplateRows',
-  gap: 'gap',
-}
-
-
 class FWGrid extends HTMLElement {
-  static get observedAttributes() {
-    return [
-      'template-columns',
-      'template-rows',
-      'gap',
-      'row-gap',
-      'column-gap',
-      'auto-columns',
-      'column',
-      'row',
-      'auto-flow',
-      'auto-rows',
-      'area',
-      'template-areas',
-    ]
-  }
-
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
     const template = document.createElement('template')
-    template.innerHTML = '<div id="fw-grid-container"><slot></slot></div>'
+    template.innerHTML = '<style>:host { display: grid; }</style><slot></slot>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.container = this.shadowRoot.getElementById('fw-grid-container')
-
-    this.applyStyles()
-  }
-
-  applyStyles() {
-    this.container.style.display = 'grid'
-    this.container.style.padding = '1em'
-
-    Object.keys(properties).forEach((k) => {
-      const _value = this.getAttribute(k)
-      if (_value) {
-        this.container.style[properties[k]] = _value
-      }
-    })
-  }
-
-  attributeChangedCallback() {
-    this.applyStyles()
   }
 }
 
-customElements.define('fw-grid', FWGrid)
+customElements.define('fw-grid', GridProps(FWGrid))
 
 /* fw-box */
 class FWBox extends HTMLElement {
-  static get observedAttributes() {
-    return [
-      'color',
-      'bg',
-      'm',
-      'p',
-      'mt',
-      'mr',
-      'mb',
-      'ml',
-      'pt',
-      'pr',
-      'pb',
-      'pl',
-    ]
-  }
-
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
     const template = document.createElement('template')
     template.innerHTML =
-      '<div id="fw-crayons-layout-container"><slot></slot></div>'
+      '<style>:host { display: block; } </style><slot></slot>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-
-    this.container = this.shadowRoot.getElementById(
-      'fw-crayons-layout-container'
-    )
-
-    this.applyStyles()
-  }
-
-  applyStyles() {
-    this.container.style.display = 'block'
-    this.container.style.padding = '1em'
-
-    const properties = {
-      color: 'color',
-      bg: 'backgroundColor',
-      m: 'margin',
-      p: 'padding',
-      mt: 'marginTop',
-      mr: 'marginRight',
-      mb: 'marginBottom',
-      ml: 'marginLeft',
-      pt: 'paddingTop',
-      pr: 'paddingRight',
-      pb: 'paddingBottom',
-      pl: 'paddingLeft',
-    }
-    Object.keys(properties).forEach((k) => {
-      const _value = this.getAttribute(k)
-      if (_value) {
-        this.container.style[properties[k]] = _value
-      }
-    })
-  }
-
-  attributeChangedCallback() {
-    this.applyStyles()
   }
 }
 
-customElements.define('fw-box', FWBox)
+customElements.define('fw-box', ColorProps(SpaceProps(FWBox)))
 
    </script>
     </body>

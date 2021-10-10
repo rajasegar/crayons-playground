@@ -73,6 +73,9 @@ const renderWithChildren = (name, props, children) => {
       case 'fw-textarea':
       case 'fw-timepicker':
       case 'fw-toggle':
+      case 'fw-box':
+      case 'fw-flex':
+      case 'fw-grid':
         child = render(type, props)
         break
 
@@ -81,7 +84,9 @@ const renderWithChildren = (name, props, children) => {
     }
 
     preview.appendChild(child)
-    component.shadowRoot.querySelector('#fw-crayons-layout-container').appendChild(preview)
+    component.shadowRoot
+      .querySelector('#fw-crayons-layout-container')
+      .appendChild(preview)
   })
 
   return component
