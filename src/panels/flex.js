@@ -19,6 +19,11 @@ class FlexPanel extends HTMLElement {
     this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container { padding: 1em; }
+</style>
+
+<div class="container">
       <fw-select
         label="Flex Direction"
         value=${props['flex-direction']}
@@ -61,6 +66,7 @@ class FlexPanel extends HTMLElement {
         <fw-select-option value="space-between">space-between</fw-select-option>
         <fw-select-option value="space-around">space-around</fw-select-option>
       </fw-select>
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
