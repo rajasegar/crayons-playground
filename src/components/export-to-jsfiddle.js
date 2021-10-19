@@ -9,6 +9,7 @@ background: transparent;
 color: white;
 border: none;
 cursor: pointer;
+font-size: .85em;
 }
 </style>
 <div>

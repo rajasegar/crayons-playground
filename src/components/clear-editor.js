@@ -3,17 +3,17 @@ import { store } from '../store'
 const template = document.createElement('template')
 template.innerHTML = `
 <style>
-textarea { display: none; }
 button {
 background: transparent;
 color: white;
 border: none;
 cursor: pointer;
+font-size: 0.85em;
 }
 </style>
 <div>
 <button id="btn-clear-editor" type="button">
-Clear Editor <fw-icon name="cross-big"></fw-icon>
+Clear Editor <fw-icon size="8" name="cross-big"></fw-icon>
 </button>
 </div>
 `

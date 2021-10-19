@@ -36,8 +36,12 @@ class ToggleCodePanel extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
-    template.innerHTML =
-      ' <div>Code Panel <fw-toggle size="small"></fw-toggle></div> '
+    template.innerHTML = `<style>
+.label {
+font-size: .85em;
+}
+</style>
+<div><span class="label">Code Panel</span> <fw-toggle size="small"></fw-toggle></div> `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }

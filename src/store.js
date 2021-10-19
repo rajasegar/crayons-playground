@@ -73,7 +73,7 @@ function appReducer(state = initialState, { type, payload }) {
 
           const { newId, clonedComponents } = duplicateComponent(
             selectedComponent,
-            draftState.components,
+            draftState.components
           )
 
           draftState.components = {
@@ -104,7 +104,7 @@ function appReducer(state = initialState, { type, payload }) {
         draftState.selectedId = DEFAULT_ID
         draftState.components = deleteComponent(
           component,
-          draftState.components,
+          draftState.components
         )
       })
 
@@ -117,6 +117,11 @@ function appReducer(state = initialState, { type, payload }) {
         const { form, ...defaultProps } = DEFAULT_PROPS[component.type] || {}
 
         draftState.components[payload.componentId].props = defaultProps || {}
+      })
+
+    case 'IMPORT_COMPONENTS':
+      return produce(state, (draftState) => {
+        draftState.components = payload.components
       })
 
     default:

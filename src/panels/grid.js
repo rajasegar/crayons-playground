@@ -17,6 +17,10 @@ class GridPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container { padding: 1em; }
+</style>
+<div class="container">
       <fw-input label="Template Columns" value="${props['grid-template-columns']}" data-property="grid-template-columns"></fw-input>
       <fw-input label="Template Rows" value="${props['grid-template-rows']}" data-property="grid-template-rows"></fw-input>
       <fw-input label="Gap" value="${props['grid-gap']}" data-property="grid-gap"></fw-input>
@@ -29,6 +33,7 @@ class GridPanel extends HTMLElement {
       <fw-input label="Auto Rows" value="${props['grid-auto-rows']}" data-property="grid-auto-rows"></fw-input>
       <fw-input label="Area" value="${props['grid-area']}" data-property="grid-area"></fw-input>
       <fw-input label="Template Areas" value="${props['grid-template-areas']}" data-property="grid-templates-areas"></fw-input>
+</div>
 
     `
 

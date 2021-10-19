@@ -37,6 +37,10 @@ background-color: white;
 .details-container {
 padding: 0.5em;
 }
+
+.container {
+padding: 1em;
+}
 </style>
       <details>
       <summary>Margin</summary>
@@ -54,7 +58,7 @@ padding: 0.5em;
       </details>
       <details>
       <summary>Padding</summary>
-      <div>
+      <div class="details-container">
       <fw-input  label="All" data-property="p"></fw-input>
       <fw-grid grid-template-columns="repeat(2,1fr" grid-gap="20px">
       <fw-input data-property="pt" placeholder="↑ top"></fw-input>
@@ -65,10 +69,12 @@ padding: 0.5em;
       </div>
       </details>
 
+<div class="container">
       <p><label for="txtBg">Background color:</label></p>
       <input id="txtBg" type="color" data-property="bg"/>
       <p><label for="txtColor">Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

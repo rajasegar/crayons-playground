@@ -23,6 +23,11 @@ class ToggleBuilderMode extends HTMLElement {
     this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+:host {
+font-size: .85em;
+}
+</style>
       <div>Builder Mode <fw-toggle size="small" checked></fw-toggle></div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))

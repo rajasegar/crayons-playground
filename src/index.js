@@ -4,7 +4,7 @@ import './components/toggle-show-code'
 import './components/export-to-jsfiddle'
 import './components/inspector-panel'
 import './components/clear-editor'
-
+import './components/editor-menu'
 ;(function () {
   const editor = document.getElementById('editor')
 
