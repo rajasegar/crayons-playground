@@ -37,11 +37,12 @@ class ToggleCodePanel extends HTMLElement {
     this.shadowRoot.innerHTML = ''
     const template = document.createElement('template')
     template.innerHTML = `<style>
-.label {
+.container {
 font-size: .85em;
+padding: 0 1em;
 }
 </style>
-<div><span class="label">Code Panel</span> <fw-toggle size="small"></fw-toggle></div> `
+<div class="container">Code Panel <fw-toggle size="small"></fw-toggle></div> `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }

@@ -3,6 +3,9 @@ import markup from '../jsFiddleTemplate'
 const template = document.createElement('template')
 template.innerHTML = `
 <style>
+.container { 
+padding: 0 1em;
+}
 textarea { display: none; }
 button {
 background: transparent;
@@ -12,11 +15,11 @@ cursor: pointer;
 font-size: .85em;
 }
 </style>
-<div>
+<div class="container">
 <form method="post" action="https://jsfiddle.net/api/post/library/pure" target="check">
 <textarea id="txt-html" name="html"><h1>hello wold</h1></textarea>
-<button id="btn-export" type="submit">
-Export to JSFiddle <fw-icon name="open-new-tab"></fw-icon>
+<button id="btn-export" type="submit" title="Export to JSFiddle">
+JSFiddle <fw-icon name="open-new-tab"></fw-icon>
 </button>
 </form>
 </div>

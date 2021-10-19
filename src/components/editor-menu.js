@@ -7,7 +7,7 @@ template.innerHTML = `
 .dropbtn {
   background: transparent;
   color: white;
-  padding: 0 6px;
+  padding: 0 1em;
   font-size: .85em;
   border: none;
   cursor: pointer;

@@ -3,6 +3,9 @@ import { store } from '../store'
 const template = document.createElement('template')
 template.innerHTML = `
 <style>
+.container { 
+padding: 0 1em;
+}
 button {
 background: transparent;
 color: white;
@@ -11,9 +14,9 @@ cursor: pointer;
 font-size: 0.85em;
 }
 </style>
-<div>
-<button id="btn-clear-editor" type="button">
-Clear Editor <fw-icon size="8" name="cross-big"></fw-icon>
+<div class="container">
+<button id="btn-clear-editor" type="button" title="Clear Editor">
+Clear <fw-icon size="8" name="cross-big"></fw-icon>
 </button>
 </div>
 `
