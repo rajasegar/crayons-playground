@@ -18,6 +18,12 @@ class SelectPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-input label="Label" value="${props.label}" data-property="label"></fw-input>
       <fw-input label="Placeholder" value="${props.placeholder}" data-property="placeholder"></fw-input>
       <fw-select
@@ -32,7 +38,7 @@ class SelectPanel extends HTMLElement {
         <fw-select-option value="warning">warning</fw-select-option>
       </fw-select>
       <fw-input label="State Text" value="${props['state-text']}" data-property="state-text"></fw-input>
-
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

@@ -33,6 +33,7 @@
     "@rajasegar/styled-web-components": "^1.0.0",
     "browser-nativefs": "^0.12.0",
     "immer": "^9.0.6",
+    "jszip": "^3.7.1",
     "lodash": "^4.17.21",
     "redux": "^4.1.1"
   }

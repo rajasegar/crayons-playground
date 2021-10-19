@@ -23,6 +23,12 @@ class HeadingPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-input value="${props.children}" label="Children" data-property="children"></fw-input>
 
       <fw-select
@@ -52,7 +58,7 @@ class HeadingPanel extends HTMLElement {
         <fw-select-option value="right">right</fw-select-option>
         <fw-select-option value="justify">justify</fw-select-option>
       </fw-select>
-      <fw-flex justify-content="space-between">
+      <fw-flex justify-content="space-around">
       <fw-checkbox data-property="font-weight" value="bold">Bold</fw-checkbox>
       <fw-checkbox data-property="font-style" value="italic">Italic</fw-checkbox>
       </fw-flex>
@@ -60,6 +66,7 @@ class HeadingPanel extends HTMLElement {
       <fw-input label="Letter Spacing" data-property="letter-spacing"></fw-input>
       <p><label for="txtColor">Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
+</div>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

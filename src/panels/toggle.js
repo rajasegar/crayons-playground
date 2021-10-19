@@ -18,6 +18,12 @@ class TogglePanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-select
         label="Size"
         value=${props.size}
@@ -29,6 +35,7 @@ class TogglePanel extends HTMLElement {
         <fw-select-option value="medium">medium</fw-select-option>
         <fw-select-option value="small">small</fw-select-option>
       </fw-select>
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

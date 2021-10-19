@@ -18,6 +18,12 @@ class DatepickerPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-input label="Format" value="${props.dateformat}" data-property="date-format"></fw-input>
       <fw-select
         label="Mode"
@@ -29,7 +35,7 @@ class DatepickerPanel extends HTMLElement {
         <fw-select-option value="range">range</fw-select-option>
         <fw-select-option value="single-date">single-date</fw-select-option>
       </fw-select>
-
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

@@ -23,11 +23,18 @@ const icons = [
 ]
 const template = document.createElement('template')
 template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <label>Name:</label>
       <input type="text" list="icons" id="txt-icon" placeholder="Enter your icon name" data-property="name"/>
       <datalist id="icons">
       ${icons.map((i) => `<option value="${i}">`).join('\n')}
       </datalist>
+</div>
       `
 
 class IconPanel extends HTMLElement {

@@ -18,8 +18,15 @@ class RadioPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-input label="Label" value="${props.label}" data-property="label"></fw-input>
       <fw-input label="Children" value="${props.children}" data-property="children"></fw-input>
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

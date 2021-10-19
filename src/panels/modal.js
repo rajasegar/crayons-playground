@@ -23,6 +23,12 @@ class ModalPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-input value="${props.id}" label="Modal ID" data-property="id"></fw-input>
       <fw-input value="${props['title-text']}" label="Title Text" data-property="title-text"></fw-input>
       <fw-input value="" label="Description" data-property="description"></fw-input>
@@ -41,6 +47,7 @@ class ModalPanel extends HTMLElement {
 
       <fw-input value="Cancel" label="Cancel Text" data-property="cancel-text"></fw-input>
       <fw-input value="OK" label="Success Text" data-property="success-text"></fw-input>
+</div>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

@@ -23,6 +23,12 @@ class TextPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-textarea value="${props.children}" label="Children" data-property="children"></fw-textarea>
 
       <fw-select
@@ -45,6 +51,7 @@ class TextPanel extends HTMLElement {
       <fw-input label="Letter Spacing" data-property="letter-spacing"></fw-input>
       <p><label for="txtColor">Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
+</div>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

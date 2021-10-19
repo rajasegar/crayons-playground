@@ -18,6 +18,12 @@ class LabelPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-select
         label="Color"
         value=${props.color}
@@ -33,7 +39,7 @@ class LabelPanel extends HTMLElement {
         <fw-select-option value="yellow">yellow</fw-select-option>
       </fw-select>
       <fw-input label="Value" value="${props.value}" data-property="value"></fw-input>
-
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

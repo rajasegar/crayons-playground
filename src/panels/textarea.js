@@ -18,6 +18,12 @@ class TextareaPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-input label="Label" value="${props.label}" data-property="label"></fw-input>
       <fw-input label="Placeholder" value="${props.placeholder}" data-property="placeholder"></fw-input>
       <fw-select
@@ -34,7 +40,7 @@ class TextareaPanel extends HTMLElement {
       <fw-input label="State Text" value="${props['state-text']}" data-property="state-text"></fw-input>
       <fw-input type="number" label="Rows" value="${props.rows}" data-property="rows"></fw-input>
       <fw-input type="number" label="Columns" value="${props.cols}" data-property="cols"></fw-input>
-
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

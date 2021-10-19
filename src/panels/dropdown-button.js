@@ -8,19 +8,6 @@ class DropdownButtonPanel extends HTMLElement {
     this.addEventListener('fwChange', (ev) => {
       const id = this.dataset.id
       updateProps(ev, id)
-      /*
-      const path = ev.path || (ev.composedPath && ev.composedPath())
-      const propName = path[0].dataset.property
-
-      store.dispatch({
-        type: 'UPDATE_PROPS',
-        payload: {
-          id,
-          name: propName,
-          value: ev.detail.value,
-        },
-      })
-      */
     })
 
     this.render()
@@ -31,6 +18,12 @@ class DropdownButtonPanel extends HTMLElement {
     const { props } = components[this.dataset.id]
     const template = document.createElement('template')
     template.innerHTML = `
+<style>
+.container {
+padding: 1em;
+}
+</style>
+<div class="container">
       <fw-select
         label="Color"
         value=${props.color}
@@ -46,6 +39,7 @@ class DropdownButtonPanel extends HTMLElement {
       </fw-select>
 
       <fw-input value="${props.label}" label="Label" data-property="label"></fw-input>
+</div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
