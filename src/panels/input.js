@@ -38,6 +38,8 @@ padding: 1em;
         <fw-select-option value="warning">warning</fw-select-option>
       </fw-select>
       <fw-input label="State Text" value="${props['state-text']}" data-property="state-text"></fw-input>
+
+      <fw-input label="Left Icon"  placeholder="Enter your icon name" data-property="icon-left"></fw-input>
 </div>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))

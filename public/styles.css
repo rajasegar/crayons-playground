@@ -35,8 +35,10 @@ header {
 }
 
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr 300px;
   height: calc(100vh - 32px);
+  overflow: hidden;
 }
 
 .sidebar {
@@ -50,13 +52,14 @@ header {
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
+  overflow: auto;
 }
 
 #editor {
   height: 100%;
   background-color: var(--smoke10);
   padding: 1em;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #code-panel {
@@ -124,6 +127,7 @@ background-color: rgb(237, 242, 246);
 fw-flex::part(preview),
 fw-grid::part(preview), 
 fw-box::part(preview),
+div::part(preview),
 modal-preview::part(preview) {
   margin: 0.25em;
   padding: 0.5em;
@@ -133,7 +137,14 @@ modal-preview::part(preview) {
 fw-flex::part(preview):hover,
 fw-grid::part(preview):hover,
 fw-box::part(preview):hover,
+div::part(preview):hover,
 modal-preview::part(preview):hover {
   border: 1px solid var(--elephant);
+}
+
+.preview-wrapper {
+  margin: 0.25em;
+  padding: 0.5em;
+  border: 1px dashed black;
 }
 

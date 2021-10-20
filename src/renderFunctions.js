@@ -24,24 +24,12 @@ const renderWithChildren = (name, props, children) => {
 
   // children
 
-  const { components, builderMode } = store.getState()
+  const { components } = store.getState()
   children.forEach((id) => {
-    const { type, props } = components[id]
-    const preview = document.createElement('div')
-    preview.id = id
-    preview.setAttribute('part', 'preview')
+    const { type, props, children } = components[id]
 
-    if (builderMode) {
-      preview.className = 'preview-wrapper'
-    }
-
-    preview.onclick = (ev) => {
-      ev.stopPropagation()
-      store.dispatch({
-        type: 'SELECT_COMPONENT',
-        payload: { selectedId: id },
-      })
-    }
+    const preview = document.createElement('preview-container')
+    preview.setAttribute('id', id)
 
     let child
     switch (type) {
@@ -73,11 +61,16 @@ const renderWithChildren = (name, props, children) => {
       case 'fw-textarea':
       case 'fw-timepicker':
       case 'fw-toggle':
-      case 'fw-box':
-      case 'fw-flex':
-      case 'fw-grid':
       case 'fw-modal':
         child = render(type, props)
+        break
+
+      case 'fw-flex':
+      case 'fw-grid':
+      case 'fw-box':
+      case 'fw-tabs':
+      case 'fw-tab':
+        child = renderWithChildren(type, props, children)
         break
 
       default:

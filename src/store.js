@@ -27,6 +27,7 @@ function appReducer(state = initialState, { type, payload }) {
   switch (type) {
     case 'ADD_COMPONENT':
       return produce(state, (draftState) => {
+        debugger
         const id = payload.testId || generateId()
         const { form, ...defaultProps } = DEFAULT_PROPS[payload.type] || {}
         draftState.selectedId = id

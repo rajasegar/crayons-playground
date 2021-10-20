@@ -16,6 +16,10 @@ import './crayons/fw-text'
 import './crayons/fw-box'
 
 import './previews/modal'
+import './previews/tabs'
+import './previews/tab'
+
+import './components/preview-container'
 
 export default function updateEditor() {
   const { components, builderMode } = store.getState()
@@ -31,20 +35,8 @@ export default function updateEditor() {
 
   components.root.children.forEach((id) => {
     const { type, props, children } = components[id]
-    const preview = document.createElement('div')
-    preview.id = id
-
-    if (builderMode) {
-      preview.className = 'preview-wrapper'
-    }
-
-    preview.onclick = (ev) => {
-      ev.stopImmediatePropagation()
-      store.dispatch({
-        type: 'SELECT_COMPONENT',
-        payload: { selectedId: id },
-      })
-    }
+    const preview = document.createElement('preview-container')
+    preview.setAttribute('id', id)
 
     let child
     switch (type) {
@@ -84,11 +76,20 @@ export default function updateEditor() {
       case 'fw-flex':
       case 'fw-grid':
       case 'fw-box':
+      case 'fw-tabs':
         child = renderWithChildren(type, props, children)
         break
 
       case 'fw-modal':
         child = renderWithChildren('modal-preview', props, children)
+        break
+
+      case 'fw-tabs':
+        child = renderWithChildren('tabs-preview', props, children)
+        break
+
+      case 'fw-tab':
+        child = renderWithChildren('tab-preview', props, children)
         break
 
       default:

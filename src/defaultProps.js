@@ -28,7 +28,6 @@ const defaultProps = {
   },
   'fw-input': {
     label: 'Name',
-    'icon-left': 'add-contact',
     'state-text': 'Do not enter your user ID',
     state: 'warning',
     placeholder: 'Enter your official name',
@@ -60,6 +59,7 @@ const defaultProps = {
     'grid-template-columns': 'repeat(4, 1fr)',
     'grid-gap': '20px',
   },
+  'fw-box': {},
   'fw-heading': {
     level: '1',
     children: 'Hello world',
@@ -96,6 +96,10 @@ const defaultProps = {
     id: 'mymodal',
     'title-text': 'Welcome',
     size: 'standard',
+  },
+  'fw-tabs': {},
+  'fw-tab': {
+    'tab-header': 'TabHeader1',
   },
 }
 

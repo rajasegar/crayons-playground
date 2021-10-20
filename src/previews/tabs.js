@@ -1,11 +1,6 @@
 import { store } from '../store'
-import {
-  ColorProps,
-  SpaceProps,
-  LayoutProps,
-} from '@rajasegar/styled-web-components'
 
-class FWBox extends ColorProps(SpaceProps(LayoutProps(HTMLElement))) {
+class TabsPreview extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -13,15 +8,16 @@ class FWBox extends ColorProps(SpaceProps(LayoutProps(HTMLElement))) {
     template.innerHTML =
       '<div id="fw-crayons-layout-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-
     this.container = this.shadowRoot.getElementById(
       'fw-crayons-layout-container'
     )
     this.container.addEventListener('drop', (ev) => {
+      debugger
       ev.preventDefault()
       ev.stopImmediatePropagation()
       const id = ev.dataTransfer.getData('id')
       const parentId = this.parentNode.id
+      console.log(parentId)
       const payload = {
         type: id,
         parentName: parentId,
@@ -33,19 +29,12 @@ class FWBox extends ColorProps(SpaceProps(LayoutProps(HTMLElement))) {
 
     this.container.addEventListener('dragover', (ev) => {
       ev.preventDefault()
-      ev.stopImmediatePropagation()
-      this.container.style.background = 'yellow'
+      this.container.style.background = 'lightyellow'
     })
 
     this.container.style.display = 'block'
-    this.container.style.padding = '0.5em'
-  }
-
-  attributeChangedCallback(attr) {
-    if (super.attributeChangedCallback) {
-      super.attributeChangedCallback(attr)
-    }
+    this.container.style.padding = '1em'
   }
 }
 
-customElements.define('fw-box', FWBox)
+window.customElements.define('tabs-preview', TabsPreview)

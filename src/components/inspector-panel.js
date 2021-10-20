@@ -35,10 +35,8 @@ class InspectorPanel extends HTMLElement {
     this.id = this.getAttribute('id') // selected component id
 
     this.addEventListener('fwClick', (ev) => {
-      console.log(ev)
       const path = ev.path || (ev.composedPath && ev.composedPath())
       const buttonId = path[0].id
-      console.log(buttonId)
       switch (buttonId) {
         case 'btn-copy-code':
           // dispatch copy code message

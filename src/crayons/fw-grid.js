@@ -6,9 +6,12 @@ class FWGrid extends GridProps(SpaceProps(HTMLElement)) {
     super()
     this.attachShadow({ mode: 'open' })
     const template = document.createElement('template')
-    template.innerHTML = '<div id="fw-crayons-layout-container"><slot></slot></div>'
+    template.innerHTML =
+      '<div id="fw-crayons-layout-container"><slot></slot></div>'
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.container = this.shadowRoot.getElementById('fw-crayons-layout-container')
+    this.container = this.shadowRoot.getElementById(
+      'fw-crayons-layout-container'
+    )
     this.container.addEventListener('drop', (ev) => {
       ev.preventDefault()
       ev.stopImmediatePropagation()
@@ -25,10 +28,11 @@ class FWGrid extends GridProps(SpaceProps(HTMLElement)) {
 
     this.container.addEventListener('dragover', (ev) => {
       ev.preventDefault()
+      this.container.style.background = 'aquamarine'
     })
 
     this.container.style.display = 'grid'
-    this.container.style.padding = '1em'
+    this.container.style.padding = '0.5em'
   }
 
   attributeChangedCallback(attr) {
