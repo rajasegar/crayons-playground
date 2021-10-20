@@ -16,16 +16,16 @@ function generateCodeForChildren(offspring) {
     const properties = Object.keys(props)
       .filter((p) => !['children', 'options'].includes(p))
       .map((p) => `${p}="${props[p]}"`)
-      .join(' ')
+      .join(' \r\n')
 
     if (props.children) {
       code += `<${type} ${properties}>${props.children}</${type}>\r\n`
     } else if (children.length > 0) {
       const _children = generateCodeForChildren(children)
-      code += `<${type} ${properties}>${_children}</${type}>\r\n`
+      code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
     } else if (props.options) {
       const _children = generateChildrenFromOptions(type, props.options)
-      code += `<${type} ${properties}>${_children}</${type}>\r\n`
+      code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
     } else {
       code += `<${type} ${properties}></${type}>\r\n`
     }
@@ -38,22 +38,22 @@ function generateChildrenFromOptions(type, options) {
   switch (type) {
     case 'fw-select':
       opts = generateOptionsForSelect(options)
-      break;
+      break
 
     case 'fw-dropdown-button':
       opts = generateOptionsForDropdownButton(options)
-      break;
+      break
 
     default:
       console.error('Unknown component with options props')
   }
-  return opts;
+  return opts
 }
 
 function generateOptionsForDropdownButton(options) {
   const opts = options
     .map((option) => {
-      return `<option id="${option.id}" value="${option.value}">${option.label}</option>`
+      return `  <option id="${option.id}" value="${option.value}">${option.label}</option>`
     })
     .join('\n')
 
@@ -64,7 +64,7 @@ function generateOptionsForDropdownButton(options) {
 function generateOptionsForSelect(options) {
   return options
     .map((option) => {
-      return `<fw-select-option value="${option.value}">${option.label}</fw-select-option>`
+      return `  <fw-select-option value="${option.value}">${option.label}</fw-select-option>`
     })
     .join('\n')
 }

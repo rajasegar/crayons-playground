@@ -60,9 +60,12 @@ header {
 }
 
 #code-panel {
-  padding: 1em;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+pre {
+    padding: 2em;
 }
 
 .inspector { 

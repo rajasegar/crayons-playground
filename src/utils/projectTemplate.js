@@ -60,7 +60,7 @@ export const manifest = `{
       }
     }
   },
-  "whitelisted-domains": ['https://*.freshdesk.com'],
+  "whitelisted-domains": ["https://*.freshdesk.com"],
   "engines": {
     "node": "12.19.0",
     "fdk": "7.1.0"

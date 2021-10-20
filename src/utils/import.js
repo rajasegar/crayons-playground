@@ -2,7 +2,7 @@ import { fileOpen, fileSave } from 'browser-nativefs'
 
 export async function loadFromJSON() {
   const blob = await fileOpen({
-    extensions: ['json'],
+    extensions: ['.json'],
     mimeTypes: ['application/json'],
   })
 
