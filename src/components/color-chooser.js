@@ -113,14 +113,23 @@ class ColorChooser extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    const txt$ = this.shadowRoot.querySelector('#txt-color')
+    const wrapper$ = this.shadowRoot.querySelector('.palette-wrapper')
     const { components } = store.getState()
     const { props } = components[this.dataset.id]
-    txt$.value = props.color || ''
 
-    txt$.addEventListener('change', (ev) => {
+    wrapper$.addEventListener('click', (ev) => {
+      ev.stopImmediatePropagation()
       const id = this.dataset.id
-      updateProps(ev, id)
+      if (ev.target.type === 'radio') {
+        store.dispatch({
+          type: 'UPDATE_PROPS',
+          payload: {
+            id,
+            name: 'color',
+            value: ev.target.value,
+          },
+        })
+      }
     })
   }
 }
