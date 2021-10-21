@@ -10,11 +10,11 @@ const defaultProps = {
     label: '',
   },
   'fw-dropdown-button': {
-    label: 'Choose the sport',
+    label: 'Choose the status',
     options: [
-      { id: '1', value: 'Cricket', label: 'Cricket' },
-      { id: '2', value: 'Football', label: 'Football' },
-      { id: '3', value: 'Tennis', label: 'Tennis' },
+      { id: '1', value: 'Open', label: 'Open' },
+      { id: '2', value: 'Pending', label: 'Pending' },
+      { id: '3', value: 'Closed', label: 'Closed' },
     ],
   },
   'fw-datepicker': {
@@ -47,8 +47,10 @@ const defaultProps = {
     value: '1',
     placeholder: 'Your choice',
     options: [
-      { value: 1, label: 'Starks' },
-      { value: 2, label: 'Lannisters' },
+      { value: 1, label: 'Normal' },
+      { value: 2, label: 'Medium' },
+      { value: 3, label: 'High' },
+      { value: 4, label: 'Low' },
     ],
   },
   'fw-flex': {},
