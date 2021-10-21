@@ -13,23 +13,56 @@ function generateCodeForChildren(offspring) {
   let code = ''
   offspring.forEach((id) => {
     const { type, props, children } = components[id]
-    const properties = Object.keys(props)
-      .filter((p) => !['children', 'options'].includes(p))
-      .map((p) => `${p}="${props[p]}"`)
-      .join(' \r\n')
 
-    if (props.children) {
-      code += `<${type} ${properties}>${props.children}</${type}>\r\n`
-    } else if (children.length > 0) {
-      const _children = generateCodeForChildren(children)
-      code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
-    } else if (props.options) {
-      const _children = generateChildrenFromOptions(type, props.options)
-      code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
-    } else {
-      code += `<${type} ${properties}></${type}>\r\n`
+    switch (type) {
+      case 'fw-button':
+        code += generateButtonCode(props)
+        break
+
+      default:
+        code += generateDefaultCode(type, props, children)
     }
   })
+  return code
+}
+
+function generateDefaultCode(type, props, children) {
+  let code = ''
+
+  const properties = Object.keys(props)
+    .filter((p) => !['children', 'options'].includes(p))
+    .map((p) => `${p}="${props[p]}"`)
+    .join(' \r\n')
+
+  if (props.children) {
+    code += `<${type} ${properties}>${props.children}</${type}>\r\n`
+  } else if (children.length > 0) {
+    const _children = generateCodeForChildren(children)
+    code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
+  } else if (props.options) {
+    const _children = generateChildrenFromOptions(type, props.options)
+    code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
+  } else {
+    code += `<${type} ${properties}></${type}>\r\n`
+  }
+
+  return code
+}
+
+function generateButtonCode(props) {
+  let code = ''
+
+  const properties = Object.keys(props)
+    .filter((p) => !['children', 'icon'].includes(p))
+    .map((p) => `${p}="${props[p]}"`)
+    .join(' \r\n')
+
+  if (props.size && props.size === 'icon') {
+    code += `<fw-button ${properties}><fw-icon name="${props.icon}"></fw-icon></fw-button>`
+  } else {
+    code += `<fw-button ${properties}>${props.children}</fw-button>\r\n`
+  }
+
   return code
 }
 

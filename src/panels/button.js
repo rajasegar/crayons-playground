@@ -49,7 +49,9 @@ class ButtonPanel extends HTMLElement {
         <fw-select-option value="normal">normal</fw-select-option>
         <fw-select-option value="mini">mini</fw-select-option>
         <fw-select-option value="small">small</fw-select-option>
+        <fw-select-option value="icon">icon</fw-select-option>
       </fw-select>
+      <fw-input placeholder="icon name" label="Icon" data-property="icon"></fw-input>
       <fw-input placeholder="prop=value" label="Custom Prop" data-property="custom-prop"></fw-input>
       </div>
     `

@@ -38,7 +38,7 @@ class FWBox extends ColorProps(SpaceProps(LayoutProps(HTMLElement))) {
     })
 
     this.container.style.display = 'block'
-    this.container.style.padding = '0.5em'
+    this.container.style.padding = '0.25em'
   }
 
   attributeChangedCallback(attr) {

@@ -44,11 +44,8 @@ const defaultProps = {
     children: 'Agree or Disagree',
   },
   'fw-select': {
-    label: 'House Name',
-    required: true,
     value: '1',
     placeholder: 'Your choice',
-    'state-text': 'Select singular option',
     options: [
       { value: 1, label: 'Starks' },
       { value: 2, label: 'Lannisters' },
@@ -100,6 +97,10 @@ const defaultProps = {
   'fw-tabs': {},
   'fw-tab': {
     'tab-header': 'TabHeader1',
+  },
+  'fw-avatar': {
+    url: 'https://randomuser.me/api/portraits/women/37.jpg',
+    size: '32',
   },
 }
 

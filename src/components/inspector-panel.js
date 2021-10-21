@@ -23,6 +23,7 @@ import '../panels/toggle'
 import '../panels/select'
 import '../panels/box'
 import '../panels/modal'
+import '../panels/avatar'
 
 class InspectorPanel extends HTMLElement {
   static get observedAttributes() {
@@ -181,6 +182,10 @@ class InspectorPanel extends HTMLElement {
 
       case 'fw-modal':
         panel = `<modal-panel data-id="${this.id}"></modal-panel>`
+        break
+
+      case 'fw-avatar':
+        panel = `<avatar-panel data-id="${this.id}"></avatar-panel>`
         break
 
       default:

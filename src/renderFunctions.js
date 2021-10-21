@@ -62,6 +62,7 @@ const renderWithChildren = (name, props, children) => {
       case 'fw-timepicker':
       case 'fw-toggle':
       case 'fw-modal':
+      case 'fw-avatar':
         child = render(type, props)
         break
 
@@ -90,6 +91,12 @@ const renderButton = (props) => {
   const component = document.createElement('fw-button')
   Object.keys(props).forEach((k) => {
     if (k !== 'children') {
+      if (k === 'size' && props[k] === 'icon') {
+        component.innerHTML = ''
+        const icon = document.createElement('fw-icon')
+        icon.setAttribute('name', props['icon'])
+        component.appendChild(icon)
+      }
       component.setAttribute(k, props[k])
     } else {
       component.innerHTML = props[k]

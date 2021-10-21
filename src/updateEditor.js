@@ -14,6 +14,7 @@ import './crayons/fw-grid'
 import './crayons/fw-heading'
 import './crayons/fw-text'
 import './crayons/fw-box'
+import './crayons/fw-avatar'
 
 import './previews/modal'
 import './previews/tabs'
@@ -70,6 +71,7 @@ export default function updateEditor() {
       case 'fw-timepicker':
       case 'fw-toast':
       case 'fw-toggle':
+      case 'fw-avatar':
         child = render(type, props)
         break
 
