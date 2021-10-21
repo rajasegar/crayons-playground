@@ -1,5 +1,6 @@
 import { store } from '../store'
 import updateProps from '../updateProps'
+import '../components/color-chooser'
 
 class HeadingPanel extends HTMLElement {
   constructor() {
@@ -12,6 +13,7 @@ class HeadingPanel extends HTMLElement {
     })
 
     this.shadowRoot.addEventListener('change', (ev) => {
+      console.log(ev)
       updateProps(ev, id)
     })
 
@@ -66,6 +68,7 @@ padding: 1em;
       <fw-input label="Letter Spacing" data-property="letter-spacing"></fw-input>
       <p><label for="txtColor">Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
+      <color-chooser data-id="${this.dataset.id}"></color-chooser>
 </div>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
