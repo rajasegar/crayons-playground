@@ -1,6 +1,7 @@
 import { store } from '../store'
 import updateProps from '../updateProps'
 import '../components/color-chooser'
+import './style-props'
 
 class HeadingPanel extends HTMLElement {
   constructor() {
@@ -70,6 +71,7 @@ padding: 1em;
       <p><label for="txtColor">Custom Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
 </div>
+<styleprops-panel data-id="${this.dataset.id}"></styleprops-panel>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

@@ -23,6 +23,7 @@ padding: 1em 0;
 .palette-wrapper {
 display: flex;
 flex-wrap: wrap;
+margin-top: 0.5em;
 }
 
 input {

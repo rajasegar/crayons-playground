@@ -1,10 +1,16 @@
-import { ColorProps, TypographyProps } from '@rajasegar/styled-web-components'
+import {
+  ColorProps,
+  TypographyProps,
+  SpaceProps,
+} from '@rajasegar/styled-web-components'
 
-class FWHeading extends TypographyProps(ColorProps(HTMLElement)) {
+class FWHeading extends SpaceProps(TypographyProps(ColorProps(HTMLElement))) {
   static get observedAttributes() {
     const ownAtts = ['level']
-    const _observedAttrs = super.observedAttributes ? [...super.observedAttributes, ...ownAtts] : ownAtts;
-    return _observedAttrs;
+    const _observedAttrs = super.observedAttributes
+      ? [...super.observedAttributes, ...ownAtts]
+      : ownAtts
+    return _observedAttrs
   }
 
   constructor() {

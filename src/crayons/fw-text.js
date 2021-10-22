@@ -1,6 +1,10 @@
-import { ColorProps, TypographyProps } from '@rajasegar/styled-web-components'
+import {
+  ColorProps,
+  TypographyProps,
+  SpaceProps,
+} from '@rajasegar/styled-web-components'
 
-class FWText extends TypographyProps(ColorProps(HTMLElement)) {
+class FWText extends SpaceProps(TypographyProps(ColorProps(HTMLElement))) {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })

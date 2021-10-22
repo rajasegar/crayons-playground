@@ -72,6 +72,7 @@ header {
 #code-panel {
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
 }
 
 pre {
@@ -155,3 +156,8 @@ modal-preview::part(preview):hover {
   border: 1px dashed black;
 }
 
+#btn-copy {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

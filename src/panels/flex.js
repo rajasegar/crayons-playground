@@ -1,5 +1,6 @@
 import updateProps from '../updateProps'
 import { store } from '../store'
+import './style-props'
 
 class FlexPanel extends HTMLElement {
   constructor() {
@@ -67,6 +68,7 @@ class FlexPanel extends HTMLElement {
         <fw-select-option value="space-around">space-around</fw-select-option>
       </fw-select>
 </div>
+<styleprops-panel data-id="${this.dataset.id}"></styleprops-panel>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

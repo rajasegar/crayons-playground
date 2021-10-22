@@ -1,5 +1,7 @@
 import { store } from '../store'
 import updateProps from '../updateProps'
+import '../components/color-chooser'
+import './style-props'
 
 class TextPanel extends HTMLElement {
   constructor() {
@@ -49,9 +51,11 @@ padding: 1em;
       </fw-flex>
       <fw-input label="Line Height" data-property="line-height"></fw-input>
       <fw-input label="Letter Spacing" data-property="letter-spacing"></fw-input>
-      <p><label for="txtColor">Color:</label></p>
+<color-chooser data-id="${this.dataset.id}"></color-chooser>
+      <p><label for="txtColor">Custom Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
 </div>
+<styleprops-panel data-id="${this.dataset.id}"></styleprops-panel>
       `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

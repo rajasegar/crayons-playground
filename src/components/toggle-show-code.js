@@ -12,6 +12,20 @@ class ToggleCodePanel extends HTMLElement {
         type: 'TOGGLE_CODE_PANEL',
       })
 
+      const copybtn = document.createElement('fw-button')
+      copybtn.id = 'btn-copy'
+      copybtn.setAttribute('color', 'primary')
+      copybtn.textContent = 'Copy'
+      copybtn.onclick = () => {
+        const markup = document.getElementById('markup').textContent
+        navigator.clipboard.writeText(markup)
+        copybtn.textContent = 'Copied!'
+        setTimeout(() => {
+          copybtn.textContent = 'Copy'
+        }, 1000)
+      }
+      codePanel.appendChild(copybtn)
+
       const { showCode } = store.getState()
       if (showCode) {
         this.splitInstance = window.Split(['#editor', '#code-panel'], {
@@ -20,6 +34,7 @@ class ToggleCodePanel extends HTMLElement {
         })
         const pre$ = document.createElement('pre')
         const code$ = document.createElement('code')
+        code$.id = 'markup'
         code$.className = 'language-markup'
 
         code$.textContent = generateCode()
