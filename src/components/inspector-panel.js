@@ -3,6 +3,7 @@ import { store } from '../store'
 import getComponentNameFromType from '../utils/getComponentNameFromType'
 
 import '../panels/default'
+import '../panels/root'
 import '../panels/button'
 import '../panels/icon'
 import '../panels/flex'
@@ -101,7 +102,7 @@ class InspectorPanel extends HTMLElement {
 
     switch (type) {
       case 'root':
-        panel = '<div></div>'
+        panel = `<root-panel data-id="${this.id}"></root-panel>`
         break
 
       case 'fw-button':

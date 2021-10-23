@@ -1,7 +1,7 @@
 import updateProps from '../updateProps'
 import './children'
 
-class DefaultPanel extends HTMLElement {
+class RootPanel extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -15,9 +15,9 @@ class DefaultPanel extends HTMLElement {
 
   render() {
     const template = document.createElement('template')
-    template.innerHTML = `<children-panel></children-panel>`
+    template.innerHTML = `<children-panel data-id="${this.dataset.id}"></children-panel>`
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
 
-window.customElements.define('default-panel', DefaultPanel)
+window.customElements.define('root-panel', RootPanel)
