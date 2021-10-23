@@ -3,28 +3,6 @@ import { store } from '../store'
 import getComponentNameFromType from '../utils/getComponentNameFromType'
 
 import '../panels/default'
-import '../panels/root'
-import '../panels/button'
-import '../panels/icon'
-import '../panels/flex'
-import '../panels/checkbox'
-import '../panels/grid'
-import '../panels/heading'
-import '../panels/text'
-import '../panels/dropdown-button'
-import '../panels/datepicker'
-import '../panels/input'
-import '../panels/label'
-import '../panels/radio'
-import '../panels/spinner'
-import '../panels/tag'
-import '../panels/textarea'
-import '../panels/timepicker'
-import '../panels/toggle'
-import '../panels/select'
-import '../panels/box'
-import '../panels/modal'
-import '../panels/avatar'
 
 class InspectorPanel extends HTMLElement {
   static get observedAttributes() {
@@ -95,7 +73,6 @@ class InspectorPanel extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = ''
-    const template = document.createElement('template')
     let panel = ''
     const { components } = store.getState()
     const { type } = components[this.id]
@@ -103,97 +80,171 @@ class InspectorPanel extends HTMLElement {
     switch (type) {
       case 'root':
         panel = `<root-panel data-id="${this.id}"></root-panel>`
+        import(
+          /* webpackChunkName: "root-panel" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/root'
+        ).then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-button':
         panel = `<button-panel data-id="${this.id}"></button-panel>`
+        import('../panels/button').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-checkbox':
         panel = `<checkbox-panel data-id="${this.id}"></checkbox-panel>`
+        import('../panels/checkbox').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-select':
         panel = `<select-panel data-id="${this.id}"></select-panel>`
+        import('../panels/select').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-icon':
         panel = `<icon-panel data-id="${this.id}"></icon-panel>`
+        import('../panels/icon').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-flex':
         panel = `<flex-panel data-id="${this.id}"></flex-panel>`
+        import('../panels/flex').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-grid':
         panel = `<grid-panel data-id="${this.id}"></grid-panel>`
+        import('../panels/grid').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-box':
         panel = `<box-panel data-id="${this.id}"></box-panel>`
+        import('../panels/box').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-heading':
         panel = `<heading-panel data-id="${this.id}"></heading-panel>`
+        import('../panels/heading').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-text':
         panel = `<text-panel data-id="${this.id}"></text-panel>`
+        import('../panels/text').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-dropdown-button':
         panel = `<dropdown-button-panel data-id="${this.id}"></dropdown-button-panel>`
+        import('../panels/dropdown-button').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-input':
         panel = `<input-panel data-id="${this.id}"></input-panel>`
+        import('../panels/input').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-label':
         panel = `<label-panel data-id="${this.id}"></label-panel>`
+        import('../panels/label').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-radio':
         panel = `<radio-panel data-id="${this.id}"></radio-panel>`
+        import('../panels/radio').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-datepicker':
         panel = `<datepicker-panel data-id="${this.id}"></datepicker-panel>`
+        import('../panels/datepicker').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-spinner':
         panel = `<spinner-panel data-id="${this.id}"></spinner-panel>`
+        import('../panels/spinner').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-tag':
         panel = `<tag-panel data-id="${this.id}"></tag-panel>`
+        import('../panels/tag').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-textarea':
         panel = `<textarea-panel data-id="${this.id}"></textarea-panel>`
+        import('../panels/textarea').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-timepicker':
         panel = `<timepicker-panel data-id="${this.id}"></timepicker-panel>`
+        import('../panels/timepicker').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-toggle':
         panel = `<toggle-panel data-id="${this.id}"></toggle-panel>`
+        import('../panels/toggle').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-modal':
         panel = `<modal-panel data-id="${this.id}"></modal-panel>`
+        import('../panels/modal').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       case 'fw-avatar':
         panel = `<avatar-panel data-id="${this.id}"></avatar-panel>`
+        import('../panels/avatar').then(() => {
+          this.renderPanel(type, panel)
+        })
         break
 
       default:
         panel = `<default-panel data-id="${this.id}"></default-panel>`
         console.error('Inspector: Unknown component')
     }
+  }
 
+  renderPanel(type, panel) {
+    const template = document.createElement('template')
     const actionButtons = `
     <fw-flex>
     <fw-button id="btn-copy-code" size="icon" title="Copy component code" color="secondary"><fw-icon name="code"></fw-icon> </fw-button>

@@ -1,5 +1,4 @@
 import { store } from '../store'
-import Sortable from 'sortablejs'
 import getComponentNameFromType from '../utils/getComponentNameFromType'
 
 import '../crayons/fw-accordion'
@@ -53,18 +52,22 @@ ${childComponents}
     this.shadowRoot.appendChild(template.content.cloneNode(true))
     const el = this.shadowRoot.querySelector('#children')
     const id = this.dataset.id
-    const sortable = Sortable.create(el, {
-      onSort: (evt) => {
-        const newChildren = Array.from(evt.to.children).map((n) => n.dataset.id)
+    import('sortablejs').then(({ default: Sortable }) => {
+      Sortable.create(el, {
+        onSort: (evt) => {
+          const newChildren = Array.from(evt.to.children).map(
+            (n) => n.dataset.id
+          )
 
-        store.dispatch({
-          type: 'UPDATE_CHILDREN',
-          payload: {
-            id,
-            children: newChildren,
-          },
-        })
-      },
+          store.dispatch({
+            type: 'UPDATE_CHILDREN',
+            payload: {
+              id,
+              children: newChildren,
+            },
+          })
+        },
+      })
     })
   }
 }
