@@ -1,5 +1,7 @@
 import updateProps from '../updateProps'
 import { store } from '../store'
+import '../crayons/fw-accordion'
+import './children'
 
 class GridPanel extends HTMLElement {
   constructor() {
@@ -20,6 +22,7 @@ class GridPanel extends HTMLElement {
 <style>
 .container { padding: 1em; }
 </style>
+<fw-accordion heading="Grid Properties" open>
 <div class="container">
       <fw-input label="Template Columns" value="${props['grid-template-columns']}" data-property="grid-template-columns"></fw-input>
       <fw-input label="Template Rows" value="${props['grid-template-rows']}" data-property="grid-template-rows"></fw-input>
@@ -34,6 +37,8 @@ class GridPanel extends HTMLElement {
       <fw-input label="Area" value="${props['grid-area']}" data-property="grid-area"></fw-input>
       <fw-input label="Template Areas" value="${props['grid-template-areas']}" data-property="grid-templates-areas"></fw-input>
 </div>
+</fw-accordion>
+<children-panel data-id="${this.dataset.id}"></children-panel>
 
     `
 

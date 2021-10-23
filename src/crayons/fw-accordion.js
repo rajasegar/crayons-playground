@@ -17,15 +17,11 @@ summary:hover {
 background-color: white;
 }
 
-.details-container {
-padding: 0.5em;
-}
 </style>
-<details>
+<details ${this.hasAttribute('open') && 'open'}>
 <summary>${this.heading}</summary>
-<div class="details-container">
 <slot></slot>
-</div>
+</details>
 
 `
     this.shadowRoot.appendChild(template.content.cloneNode(true))

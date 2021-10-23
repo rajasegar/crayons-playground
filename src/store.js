@@ -46,6 +46,11 @@ function appReducer(state = initialState, { type, payload }) {
         draftState.components[payload.id].props[payload.name] = payload.value
       })
 
+    case 'UPDATE_CHILDREN':
+      return produce(state, (draftState) => {
+        draftState.components[payload.id].children = payload.children
+      })
+
     case 'SELECT_COMPONENT':
       return {
         ...state,

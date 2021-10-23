@@ -76,7 +76,7 @@ padding: 1em;
       <p><label for="txtColor">Color:</label></p>
       <input id="txtColor" type="color" data-property="color"/>
 </div>
-<children-panel component-id="${this.dataset.id}"></children-panel>
+<children-panel data-id="${this.dataset.id}"></children-panel>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }

@@ -32,18 +32,18 @@ function generateDefaultCode(type, props, children) {
   const properties = Object.keys(props)
     .filter((p) => !['children', 'options'].includes(p))
     .map((p) => `${p}="${props[p]}"`)
-    .join(' \r\n')
+    .join('\n')
 
   if (props.children) {
-    code += `<${type} ${properties}>${props.children}</${type}>\r\n`
+    code += `<${type} ${properties}>${props.children}</${type}>\n`
   } else if (children.length > 0) {
     const _children = generateCodeForChildren(children)
-    code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
+    code += `<${type} ${properties}>\r\n${_children}</${type}>\n`
   } else if (props.options) {
     const _children = generateChildrenFromOptions(type, props.options)
-    code += `<${type} ${properties}>\r\n${_children}</${type}>\r\n`
+    code += `<${type} ${properties}>\r\n${_children}</${type}>\n`
   } else {
-    code += `<${type} ${properties}></${type}>\r\n`
+    code += `<${type} ${properties}></${type}>\n`
   }
 
   return code
@@ -60,7 +60,7 @@ function generateButtonCode(props) {
   if (props.size && props.size === 'icon') {
     code += `<fw-button ${properties}><fw-icon name="${props.icon}"></fw-icon></fw-button>`
   } else {
-    code += `<fw-button ${properties}>${props.children}</fw-button>\r\n`
+    code += `<fw-button ${properties}>${props.children}</fw-button>\n`
   }
 
   return code

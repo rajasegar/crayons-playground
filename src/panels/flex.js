@@ -1,6 +1,7 @@
 import updateProps from '../updateProps'
 import { store } from '../store'
 import './style-props'
+import './children'
 
 class FlexPanel extends HTMLElement {
   constructor() {
@@ -69,6 +70,7 @@ class FlexPanel extends HTMLElement {
       </fw-select>
 </div>
 <styleprops-panel data-id="${this.dataset.id}"></styleprops-panel>
+<children-panel data-id="${this.dataset.id}"></childern-panel>
     `
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
