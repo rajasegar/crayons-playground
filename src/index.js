@@ -6,6 +6,9 @@ import './components/inspector-panel'
 import './components/clear-editor'
 import './components/editor-menu'
 import './components/download-project'
+
+import components from './components-list'
+
 ;(function () {
   const editor = document.getElementById('editor')
 
@@ -20,4 +23,11 @@ import './components/download-project'
       ev.dataTransfer.setData('id', ev.target.id)
     }
   })
+
+  const listItems = components.map((c) => {
+    return `<li class="drag-item" id="${c.id}" draggable="true">${c.name}</li>`
+  })
+
+  const ul$ = document.getElementById('crayons-components')
+  ul$.innerHTML = listItems.join('\n')
 })()
