@@ -48,11 +48,11 @@ color: var(--sidebar-bg);
 </style>
 
 <div class="dropdown">
-  <button class="dropbtn">Editor <fw-icon name="chevron-down" size="8"></fw-icon></button>
+  <button class="dropbtn">Editor <fw-icon name="chevron-down" size="8" color="white"></fw-icon></button>
   <div class="dropdown-content">
     <a role="button" id="btnExport">Export components</a>
     <a role="button" id="btnImport">Import components</a>
-    <a href="https://crayons.freshworks.com/components" target="_blank">Crayons Docs</a>
+    <a href="https://crayons.freshworks.com/introduction" target="_blank">Crayons Docs</a>
   </div>
 </div> 
 `

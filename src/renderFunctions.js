@@ -162,6 +162,23 @@ const renderSelect = (props) => {
   return component
 }
 
+const renderAccordion = (props) => {
+  const { title, body, expanded } = props
+  console.log(props)
+  const component = document.createElement('fw-accordion')
+  if (expanded) {
+    component.setAttribute('expanded', '')
+  }
+
+  component.innerHTML = `<fw-accordion-title>${title}</fw-accordion-title>
+<fw-accordion-body>
+${body}
+</fw-accordion-body>
+`
+
+  return component
+}
+
 export {
   render,
   renderButton,
@@ -169,4 +186,5 @@ export {
   renderDropdownButton,
   renderSelect,
   renderWithChildren,
+  renderAccordion,
 }

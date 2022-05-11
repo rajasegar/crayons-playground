@@ -25,7 +25,7 @@ font-size: 0.85em;
 </style>
 <div class="container">
 <button id="btn-download-project" type="button" title="Download Project">
-Download <fw-icon size="8" name="download"></fw-icon>
+Download <fw-icon size="8" name="download" color="white"></fw-icon>
 </button>
 </div>
 `

@@ -73,7 +73,7 @@ class InspectorPanel extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = ''
-    let panel = ''
+    let panel = 'Loading...'
     const { components } = store.getState()
     const { type } = components[this.id]
 
@@ -92,70 +92,120 @@ class InspectorPanel extends HTMLElement {
 
       case 'fw-button':
         panel = `<button-panel data-id="${this.id}"></button-panel>`
-        import('../panels/button').then(() => {
+        import(
+          /* webpackChunkName: "button" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/button'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-checkbox':
         panel = `<checkbox-panel data-id="${this.id}"></checkbox-panel>`
-        import('../panels/checkbox').then(() => {
+        import(
+          /* webpackChunkName: "checkbox" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/checkbox'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-select':
         panel = `<select-panel data-id="${this.id}"></select-panel>`
-        import('../panels/select').then(() => {
+        import(
+          /* webpackChunkName: "select" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/select'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-icon':
         panel = `<icon-panel data-id="${this.id}"></icon-panel>`
-        import('../panels/icon').then(() => {
+        import(
+          /* webpackChunkName: "icon" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/icon'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-flex':
         panel = `<flex-panel data-id="${this.id}"></flex-panel>`
-        import('../panels/flex').then(() => {
+        import(
+          /* webpackChunkName: "flex" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/flex'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-grid':
         panel = `<grid-panel data-id="${this.id}"></grid-panel>`
-        import('../panels/grid').then(() => {
+        import(
+          /* webpackChunkName: "grid" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/grid'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-box':
         panel = `<box-panel data-id="${this.id}"></box-panel>`
-        import('../panels/box').then(() => {
+        import(
+          /* webpackChunkName: "box" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/box'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-heading':
         panel = `<heading-panel data-id="${this.id}"></heading-panel>`
-        import('../panels/heading').then(() => {
+        import(
+          /* webpackChunkName: "heading" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/heading'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-text':
         panel = `<text-panel data-id="${this.id}"></text-panel>`
-        import('../panels/text').then(() => {
+        import(
+          /* webpackChunkName: "text" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/text'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
 
       case 'fw-dropdown-button':
         panel = `<dropdown-button-panel data-id="${this.id}"></dropdown-button-panel>`
-        import('../panels/dropdown-button').then(() => {
+        import(
+          /* webpackChunkName: "dropdown-button" */
+          /* webpackMode: "lazy" */
+          /* webpackExports: ["default", "named"] */
+          '../panels/dropdown-button'
+        ).then(() => {
           this.renderPanel(type, panel)
         })
         break
@@ -233,6 +283,13 @@ class InspectorPanel extends HTMLElement {
       case 'fw-avatar':
         panel = `<avatar-panel data-id="${this.id}"></avatar-panel>`
         import('../panels/avatar').then(() => {
+          this.renderPanel(type, panel)
+        })
+        break
+
+      case 'fw-accordion':
+        panel = `<accordion-panel data-id="${this.id}"></accordion-panel>`
+        import('../panels/accordion').then(() => {
           this.renderPanel(type, panel)
         })
         break

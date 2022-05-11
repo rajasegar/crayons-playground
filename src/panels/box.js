@@ -43,8 +43,9 @@ padding: 0.5em;
 padding: 1em;
 }
 </style>
-      <details>
-      <summary>Margin</summary>
+<fw-accordion expanded type="no_bounding_box">
+<fw-accordion-title>Margin</fw-accordion-title>
+<fw-accordion-body>
       <div class="details-container">
       <fw-input  value="${
         props.m || ''
@@ -56,9 +57,12 @@ padding: 1em;
       <fw-input data-property="mr" placeholder="→ right"></fw-input>
       </fw-grid>
       </div>
-      </details>
-      <details>
-      <summary>Padding</summary>
+</fw-accordion-body>
+</fw-accordion>
+
+<fw-accordion type="no_bounding_box">
+<fw-accordion-title>Padding</fw-accordion-title>
+<fw-accordion-body>
       <div class="details-container">
       <fw-input  label="All" data-property="p"></fw-input>
       <fw-grid grid-template-columns="repeat(2,1fr" grid-gap="20px">
@@ -68,7 +72,8 @@ padding: 1em;
       <fw-input data-property="pr" placeholder="→ right"></fw-input>
       </fw-grid>
       </div>
-      </details>
+</fw-accordion-body>
+</fw-accordion>
 
 <div class="container">
       <p><label for="txtBg">Background color:</label></p>

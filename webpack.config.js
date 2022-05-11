@@ -51,4 +51,8 @@ module.exports = {
     port: port,
     historyApiFallback: true,
   },
+
+  optimization: {
+    runtimeChunk: 'single',
+  },
 }

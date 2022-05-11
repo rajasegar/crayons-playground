@@ -104,6 +104,11 @@ const defaultProps = {
     url: 'https://randomuser.me/api/portraits/women/37.jpg',
     size: '32',
   },
+  'fw-accordion': {
+    title: 'Header Text',
+    body: '<p>Hello world from Accordion</p>',
+    expanded: false,
+  },
 }
 
 export default defaultProps

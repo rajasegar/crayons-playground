@@ -91,4 +91,8 @@ export default [
     name: 'Toggle',
     id: 'fw-toggle',
   },
+  {
+    name: 'Accordion',
+    id: 'fw-accordion',
+  },
 ]

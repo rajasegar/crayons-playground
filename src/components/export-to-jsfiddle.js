@@ -19,7 +19,7 @@ font-size: .85em;
 <form method="post" action="https://jsfiddle.net/api/post/library/pure" target="check">
 <textarea id="txt-html" name="html"><h1>hello wold</h1></textarea>
 <button id="btn-export" type="submit" title="Export to JSFiddle">
-JSFiddle <fw-icon name="open-new-tab"></fw-icon>
+JSFiddle <fw-icon name="open-new-tab" color="white"></fw-icon>
 </button>
 </form>
 </div>

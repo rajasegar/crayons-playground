@@ -1,5 +1,6 @@
 import {
   render,
+  renderAccordion,
   renderButton,
   renderCheckbox,
   renderDropdownButton,
@@ -19,6 +20,7 @@ import './crayons/fw-avatar'
 import './previews/modal'
 import './previews/tabs'
 import './previews/tab'
+import './previews/accordion'
 
 import './components/preview-container'
 
@@ -55,6 +57,10 @@ export default function updateEditor() {
 
       case 'fw-select':
         child = renderSelect(props)
+        break
+
+      case 'fw-accordion':
+        child = renderAccordion(props)
         break
 
       case 'fw-icon':

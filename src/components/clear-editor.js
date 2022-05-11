@@ -16,7 +16,7 @@ font-size: 0.85em;
 </style>
 <div class="container">
 <button id="btn-clear-editor" type="button" title="Clear Editor">
-Clear <fw-icon size="8" name="cross-big"></fw-icon>
+Clear <fw-icon size="8" name="cross-big" color="white"></fw-icon>
 </button>
 </div>
 `

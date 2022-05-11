@@ -1,7 +1,7 @@
 import { store } from '../store'
 import getComponentNameFromType from '../utils/getComponentNameFromType'
 
-import '../crayons/fw-accordion'
+// import '../crayons/fw-accordion'
 
 class ChildrenPanel extends HTMLElement {
   constructor() {
@@ -43,10 +43,13 @@ li .icon {
 padding-right: 0.5em;
 }
 </style>
-<fw-accordion heading="Children">
+<fw-accordion expanded type="no_bounding_box">
+<fw-accordion-title>Children</fw-accordion-title>
+<fw-accordion-body>
 <ul id="children">
 ${childComponents}
 </ul>
+</fw-accordion-body>
 </fw-accordion>
 `
     this.shadowRoot.appendChild(template.content.cloneNode(true))

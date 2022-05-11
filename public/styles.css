@@ -161,3 +161,12 @@ modal-preview::part(preview):hover {
     top: 20px;
     right: 20px;
 }
+
+#crayons-components {
+		overflow: auto;
+		max-height: 95vh;
+}
+
+.accordion-body {
+		padding: 0;
+}
