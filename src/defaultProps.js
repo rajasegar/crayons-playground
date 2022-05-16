@@ -3,6 +3,7 @@ const defaultProps = {
     children: 'Hello',
     color: 'secondary',
     size: 'normal',
+    id: 'my-btn-1',
   },
   'fw-checkbox': {
     children: 'I Agree',

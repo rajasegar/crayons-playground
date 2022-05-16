@@ -5,7 +5,7 @@ class ButtonPanel extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
-    this.addEventListener('fwChange', (ev) => {
+    this.addEventListener('fwInput', (ev) => {
       const id = this.dataset.id
       updateProps(ev, id)
     })
@@ -24,7 +24,12 @@ class ButtonPanel extends HTMLElement {
     }
     </style>
     <div class="container">
-      <fw-input value="${props.children}" label="Children" data-property="children"></fw-input>
+      <fw-input value="${
+        props.id || ''
+      }" label="id" data-property="id"></fw-input>
+      <fw-input value="${
+        props.children
+      }" label="Children" data-property="children"></fw-input>
       <fw-select
         label="Color"
         value=${props.color}

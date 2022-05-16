@@ -11,7 +11,7 @@ class AvatarPanel extends HTMLElement {
       updateProps(ev, id)
     })
 
-    this.shadowRoot.addEventListener('change', (ev) => {
+    this.addEventListener('fwInput', (ev) => {
       updateProps(ev, id)
     })
 
