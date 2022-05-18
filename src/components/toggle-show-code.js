@@ -1,5 +1,6 @@
 import { store } from '../store'
 import generateCode from '../generateCode'
+import Prism from 'prismjs'
 
 class ToggleCodePanel extends HTMLElement {
   constructor() {
@@ -35,11 +36,19 @@ class ToggleCodePanel extends HTMLElement {
         const pre$ = document.createElement('pre')
         const code$ = document.createElement('code')
         code$.id = 'markup'
-        code$.className = 'language-markup'
+        code$.className = 'language-html'
+        pre$.className = 'language-html'
 
-        code$.textContent = generateCode()
-        pre$.appendChild(code$)
-        codePanel.appendChild(pre$)
+        generateCode()
+          .then((code) => {
+            const formattedCode = Prism.highlight(code, Prism.languages['html'])
+            code$.innerHTML = formattedCode
+            pre$.appendChild(code$)
+            codePanel.appendChild(pre$)
+          })
+          .catch((err) => {
+            console.error(err)
+          })
       } else {
         this.splitInstance.destroy()
         codePanel.innerHTML = ''

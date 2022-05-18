@@ -5,12 +5,16 @@ class ButtonPanel extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
-    this.addEventListener('fwInput', (ev) => {
-      const id = this.dataset.id
-      updateProps(ev, id)
-    })
+    this.addEventListener('fwInput', this.updateProps)
+
+    this.addEventListener('fwChange', this.updateProps)
 
     this.render()
+  }
+
+  updateProps(ev) {
+    const id = this.dataset.id
+    updateProps(ev, id)
   }
 
   render() {
